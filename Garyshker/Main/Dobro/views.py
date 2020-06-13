@@ -22,6 +22,7 @@ def charity(request):
 			if u_form.is_valid() and p_form.is_valid():
 				u_form.save()
 				p_form.save()
+				return render(request, 'dobro/feedback.html', context={})
 
 		else:
 			u_form = UserUpdateForm(instance=request.user)

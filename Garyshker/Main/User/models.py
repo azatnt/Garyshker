@@ -13,6 +13,7 @@ class Profile(models.Model):
     phone = models.CharField(max_length=120, null=True, blank=True)
     age = models.IntegerField(null=True, blank=True)
     investment = models.IntegerField(null=True)
+    comments = models.TextField(null=True, blank=True)
     # total_investment = models.DecimalField(default=0, max_digits=99999, decimal_places=0)
     
 

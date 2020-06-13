@@ -54,5 +54,6 @@ class CharityAuthorForm(forms.ModelForm):
 		fields = [
 			'city',
 			'phone',
-			'investment'
+			'investment',
+			'comments'
 		]
