@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+
+
+{% block title %}
+	
+	Sdelat' dobro
+
+{% endblock %}
+
+
+
+{% block content %}
+	{% if user.is_authenticated %}
+		<div>
+			<form class="" action="{% url 'charity_url' %}" method="post" enctype="multipart/form-data">
+		      {% csrf_token %}
+		      {{u_form}}
+		      
+		     <div>
+		     	City: {{p_form.city}}
+		     </div>
+
+			 <div>
+		     	Phone Number: {{p_form.phone}}
+		     </div>    
+
+		     <div>
+		     	Investment: {{p_form.investment}}
+		     </div>
+		     
+		     
+		      <button type="submit" name="button">Invest</button>
+		    </form>
+		</div>
+
+	{% else %}
+
+		<div>
+			Please login, you can't invest anonymously, it is important to our report!
+			<a href="{% url 'login_url' %}">Login Please</a>		
+		</div>
+
+	{% endif %}
+
+{% endblock %}
