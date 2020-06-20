@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+
+  Obrazovanie
+
+{% endblock %}
+
+
+{% block subtitle %}
+
+{% for genre in genre_all %}
+
+  <a href="{% url 'genre_detail_url' slug=genre.slug %}">{{ genre.name }}</a>
+
+{% endfor %}
+
+  <a href="{% url 'obrazovanie_url' %}"><h2>Все темы</h2></a>
+
+  <a href="{% url 'obrazovanie_url' %}">Смотреть</a>
+
+  <a href="{% url 'obrazovanie_url' %}">Читать</a>
+
+{% endblock %}
+
+
+{% block content %}
+
+ {% for genre in genre %}
+
+    {% for item in genre.item_set.all %}
+
+      <div class="">
+
+      {{ item.name }}
+      <div class="">
+        {{ item.number_of_item }}
+      </div>
+
+      <div class="">
+        {{ item.guest }}
+      </div>
+
+      <div class="">
+        {{ item.genre }}
+      </div>
+
+      <div class="">
+        <img style="width: 190px; height: 150px;" src="{{ item.image.url }}" alt="">
+      </div>
+    </div>
+
+    {% endfor %}
+
+  {% endfor %}
+
+
+
+
+{% endblock %}

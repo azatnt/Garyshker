@@ -4,6 +4,7 @@ from django.contrib.auth import views as auth_view
 from User import views as v
 from User.views import *
 from Dobro.views import *
+from Obrazovanie.views import *
 
 
 
@@ -16,5 +17,7 @@ urlpatterns = [
     path('logout/', auth_view.LogoutView.as_view(template_name='user/logout.html'), name='logout_url'),
     path('profile/', profiles, name='profile_url'),
     path('charity/', charity, name='charity_url'),
+    path('obrazovanie/', show_item, name='obrazovanie_url'),
+    path('obrazovanie/<str:slug>/', genre_detail, name='genre_detail_url'),
     # path('charity/feedback/', )
 ]

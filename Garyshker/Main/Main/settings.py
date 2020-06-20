@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'Garyshker',
     'User',
     'Dobro',
+    'Obrazovanie',
 ]
 
 MIDDLEWARE = [
