@@ -51,7 +51,9 @@
       </div>
 
       <div class="">
-        <img style="width: 190px; height: 150px;" src="{{ item.image.url }}" alt="">
+        <a href="{% url 'item_detail_url' id=item.id %}">
+          <img style="width: 190px; height: 150px;" src="{{ item.image.url }}" alt="">
+        </a>
       </div>
     </div>
 

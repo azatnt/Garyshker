@@ -1,6 +1,9 @@
 from django.db import models
 from django.utils.text import slugify
 from time import time
+from django.utils import timezone
+
+
 
 
 def gen_slug(s):
@@ -54,6 +57,16 @@ class Format(models.Model):
 
 
 
+# class VideoPost(models.Model):
+#     title = models.CharField(max_length=120)
+#     text = models.TextField(blank=True, null=True)
+#     clip = models.FileField(upload_to='item-videos')
+#     created_date = models.DateTimeField(default=timezone.now)
+#
+#     def __str__(self):
+#         return str(self.title)
+
+
 
 class Item(models.Model):
     type = models.ForeignKey(Type, on_delete=models.CASCADE, blank=True, null=True)
@@ -64,6 +77,12 @@ class Item(models.Model):
     guest = models.CharField(max_length=120, default='Secret')
     image = models.ImageField(blank=True, upload_to='item-image')
     genre = models.ForeignKey(Genre, on_delete=models.CASCADE, blank=True, null=True)
+    video = models.FileField(upload_to='item-videos', default='Please upload video')
+    description_video = models.TextField(blank=True, null=True)
+    created_date = models.DateTimeField(default=timezone.now)
+    leading = models.CharField(max_length=120, blank=True)
+
+
 
 
     def __str__(self):

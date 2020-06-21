@@ -19,5 +19,6 @@ urlpatterns = [
     path('charity/', charity, name='charity_url'),
     path('obrazovanie/', show_item, name='obrazovanie_url'),
     path('obrazovanie/<str:slug>/', genre_detail, name='genre_detail_url'),
+    path('obrazovanie/<str:id>\d+', item_detail, name='item_detail_url'),
     # path('charity/feedback/', )
 ]

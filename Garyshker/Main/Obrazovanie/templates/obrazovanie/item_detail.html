@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+
+
+{% endblock %}
+
+
+{% block subtitle %}
+
+
+{% endblock %}
+
+
+{% block content %}
+
+  {% for item in item %}
+
+    <h3>{{ item.name }}</h3>
+
+    <div class="">
+      Ведущий: {{ item.leading }}
+    </div>
+
+    <div class="">
+      Гости: {{ item.guest }}
+    </div>
+
+    <video width="400" controls>
+      <source src="{{item.video.url}}" type="video/mp4">
+    </video>
+
+    <div class="">
+      {{ item.description_video }}
+    </div>
+
+
+
+  {% endfor %}
+
+{% endblock %}
