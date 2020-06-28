@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+
+  Reports
+
+{% endblock %}
+
+
+{% block subtitle %}
+
+
+  {% for genre in genre_all %}
+    <a href="{% url 'genre_detail_reports_url' slug=genre.slug %}">{{ genre.name }}</a>
+  {% endfor %}
+
+  <div class="">
+    <a href="{% url 'obrazovanie_url' %}">Смотреть</a>
+
+
+    <a href="{% url 'all_reports_url' %}">Читать</a>
+  </div>
+
+
+{% endblock %}
+
+
+{% block content %}
+
+  {% for genre in genre %}
+
+    {% for report in genre.report_set.all %}
+
+
+    <h5>{{ report.title }}</h5>
+
+    {{ report.author }}
+
+    <div class="">
+      {{ report.wrote_date }}
+    </div>
+
+    <div class="">
+      {{ report.body }}
+    </div>
+
+
+    {% endfor %}
+
+  {% endfor %}
+
+{% endblock %}

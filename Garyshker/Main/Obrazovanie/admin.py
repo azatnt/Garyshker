@@ -10,3 +10,7 @@ admin.site.register(Item)
 admin.site.register(Genre)
 
 admin.site.register(Format)
+
+admin.site.register(Report)
+
+admin.site.register(Comment)

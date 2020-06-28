@@ -2,6 +2,9 @@ from django.db import models
 from django.utils.text import slugify
 from time import time
 from django.utils import timezone
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 
 
@@ -93,3 +96,37 @@ class Item(models.Model):
     #     if not self.id:
     #         self.slug = gen_slug(self.name)
     #     super().save(*args, **kwargs)
+
+
+
+class Report(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    # slug = models.SlugField(blank=True)
+    genre = models.ForeignKey(Genre, on_delete=models.CASCADE, blank=True, null=True)
+    title = models.CharField(max_length=120)
+    body = models.TextField(blank=True, null=True)
+    wrote_date = models.DateTimeField(default=timezone.now)
+    likes = models.ManyToManyField(User, related_name='likes', blank=True)
+
+
+    def __str__(self):
+        return str(self.title)
+
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.slug = gen_slug(self.title)
+        super().save(*args, **kwargs)
+
+
+
+class Comment(models.Model):
+    report = models.ForeignKey(Report, on_delete=models.CASCADE, null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    content = models.TextField()
+    reply = models.ForeignKey('Comment', null=True, related_name='replies', on_delete=models.CASCADE)
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+
+    def __str__(self):
+        return '{}-{}'.format(self.report.title, str(self.user.username))

@@ -18,7 +18,14 @@ urlpatterns = [
     path('profile/', profiles, name='profile_url'),
     path('charity/', charity, name='charity_url'),
     path('obrazovanie/', show_item, name='obrazovanie_url'),
+    path('obrazovanie/reports/', all_reports, name='all_reports_url'),
+    path('obrazovanie/reports/<str:slug>', genre_detail_report, name='genre_detail_reports_url'),
     path('obrazovanie/<str:slug>/', genre_detail, name='genre_detail_url'),
     path('obrazovanie/<str:id>\d+', item_detail, name='item_detail_url'),
+    path('obrazovanie/report_detail/<int:id>', report_detail, name='report_detail_url'),
+    path('likes/', like_report, name='likes_url'),
+    path('search/', SearchField.as_view(), name='search_url'),
+
+
     # path('charity/feedback/', )
 ]

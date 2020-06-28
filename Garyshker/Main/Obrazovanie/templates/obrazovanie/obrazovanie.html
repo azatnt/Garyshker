@@ -14,18 +14,24 @@
     <a href="{% url 'genre_detail_url' slug=genre.slug %}">{{ genre.name }}</a>
   {% endfor %}
 
-  <a href="{% url 'obrazovanie_url' %}"><h2>Все темы</h2></a>
+  <div class="">
+    <a href="{% url 'obrazovanie_url' %}">Смотреть</a>
 
-  <a href="{% url 'obrazovanie_url' %}">Смотреть</a>
 
+    <a href="{% url 'all_reports_url' %}">Читать</a>
+  </div>
 
-  <a href="{% url 'obrazovanie_url' %}">Читать</a>
 
 {% endblock %}
 
 
 
 {% block content %}
+
+
+<div class="res-search">
+  <input id="search" type="searh" class="search-food" name="search-food" placeholder="Поиск">
+</div>
 
 
   {% for type in type %}
