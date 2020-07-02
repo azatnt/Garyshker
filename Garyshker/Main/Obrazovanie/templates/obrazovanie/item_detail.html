@@ -15,7 +15,6 @@
 
 {% block content %}
 
-  {% for item in item %}
 
     <h3>{{ item.name }}</h3>
 
@@ -30,6 +29,9 @@
     <video width="400" controls>
       <source src="{{item.video.url}}" type="video/mp4">
     </video>
+    <div class="">
+      {{ item.views }} views
+    </div>
 
     <div class="">
       {{ item.description_video }}
@@ -37,6 +39,7 @@
 
 
 
-  {% endfor %}
+
+
 
 {% endblock %}

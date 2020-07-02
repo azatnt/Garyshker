@@ -84,6 +84,7 @@ class Item(models.Model):
     description_video = models.TextField(blank=True, null=True)
     created_date = models.DateTimeField(default=timezone.now)
     leading = models.CharField(max_length=120, blank=True)
+    views = models.PositiveIntegerField(default=0)
 
 
 
@@ -97,16 +98,22 @@ class Item(models.Model):
     #         self.slug = gen_slug(self.name)
     #     super().save(*args, **kwargs)
 
+# STATUS_CHOICES = (
+#     ('CHECKING', 'CHECKING'),
+#     ('READY', 'READY'),
+# )
 
 
 class Report(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     # slug = models.SlugField(blank=True)
-    genre = models.ForeignKey(Genre, on_delete=models.CASCADE, blank=True, null=True)
     title = models.CharField(max_length=120)
+    genre = models.ForeignKey(Genre, on_delete=models.CASCADE, blank=True, null=True)
     body = models.TextField(blank=True, null=True)
+    # status = models.CharField(max_length=120, choices=STATUS_CHOICES, default='Checking')
     wrote_date = models.DateTimeField(default=timezone.now)
     likes = models.ManyToManyField(User, related_name='likes', blank=True)
+    moderation = models.BooleanField("Проверено", default=False)
 
 
     def __str__(self):

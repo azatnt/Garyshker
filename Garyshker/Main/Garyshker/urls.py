@@ -21,10 +21,14 @@ urlpatterns = [
     path('obrazovanie/reports/', all_reports, name='all_reports_url'),
     path('obrazovanie/reports/<str:slug>', genre_detail_report, name='genre_detail_reports_url'),
     path('obrazovanie/<str:slug>/', genre_detail, name='genre_detail_url'),
-    path('obrazovanie/<str:id>\d+', item_detail, name='item_detail_url'),
+    path('obrazovanie/<int:id>', item_detail, name='item_detail_url'),
     path('obrazovanie/report_detail/<int:id>', report_detail, name='report_detail_url'),
     path('likes/', like_report, name='likes_url'),
     path('search/', SearchField.as_view(), name='search_url'),
+    path('search-report/', SearchFieldReport.as_view(), name='search_report_url'),
+    path('report/create/', report_create, name='report_create_url'),
+    path('report_creation/', after_writing_post, name='after_writing_post_url'),
+
 
 
     # path('charity/feedback/', )

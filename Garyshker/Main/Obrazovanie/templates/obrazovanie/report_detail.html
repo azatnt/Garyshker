@@ -86,7 +86,7 @@
 
     <blockquote class="blockquote">
       <p class="mb-0"><small>{{ comment.content }}</small></p>
-      <footer class="blockquote-footer"><small>by <cite title="Source Title">{{ comment.user|capfirst }}</cite></small>
+      <footer class="blockquote-footer"><small>by <cite title="Source Title">{{ comment.user|capfirst }} {{ comment.timestamp|timesince }} ago</cite></small>
         <button type="button" name="button" class="reply-btn btn btn-outline-dark btn-sm">Reply</button>
       </footer>
     </blockquote>
@@ -96,7 +96,7 @@
       {% for reply in comment.replies.all %}
       <blockquote class="blockquote">
         <p class="mb-0"><small>{{ reply.content }}</small></p>
-        <footer class="blockquote-footer"><small> by <cite title="Source Title">{{ reply.user|capfirst }}</cite></small></footer>
+        <footer class="blockquote-footer"><small> by <cite title="Source Title">{{ reply.user|capfirst }} {{ reply.timestamp|timesince }} ago</cite></small></footer>
       </blockquote>
       {% endfor %}
       <div class="form-group row">

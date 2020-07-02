@@ -1,0 +1,22 @@
+{% if report.count > 0 %}
+
+
+{% for report in report %}
+
+  <a style="text-decoration:none; color:inherit;" href="{% url 'report_detail_url' id=report.id %}">
+    <div class="">
+      <h5>{{ report.title }}</h5>
+      {{ report.author }}
+      <div class="">
+        {{ report.wrote_date }}
+      </div>
+
+
+      <div class="">
+        {{ report.body|truncatechars:240 }}
+      </div>
+    </div>
+  </a>
+{% endfor %}
+
+{% endif %}

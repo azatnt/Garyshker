@@ -22,16 +22,27 @@
   </div>
 
 
+
 {% endblock %}
 
 
 
 {% block content %}
 
+    <div class="res-search">
+      {% csrf_token %}
+      <input id="search" type="searh" class="search-food" name="search-food" placeholder="Поиск">
+    </div>
 
-<div class="res-search">
-  <input id="search" type="searh" class="search-food" name="search-food" placeholder="Поиск">
-</div>
+
+    <div class="header-res">
+      <nav>
+        <ul id="search_results">
+
+        </ul>
+      </nav>
+    </div>
+
 
 
   {% for type in type %}

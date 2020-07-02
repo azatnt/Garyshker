@@ -3,6 +3,7 @@ from .models import *
 from django.urls import reverse
 from .forms import *
 from django.views.generic import View
+from django.db.models import F
 
 
 
@@ -17,7 +18,22 @@ class SearchField(View):
             search = ''
         item = self.model.objects.filter(name__icontains=search)
         context = {
-            'item':item
+            'item': item
+        }
+        return render(request, self.template, context)
+
+
+class SearchFieldReport(View):
+    model = Report
+    template = 'obrazovanie/search_report.html'
+    def post(self, request, *args, **kwargs):
+        if request.method == 'POST':
+            search_report = request.POST['search_report']
+        else:
+            search_report = ''
+        report = self.model.objects.filter(title__icontains=search_report)
+        context = {
+            'report': report
         }
         return render(request, self.template, context)
 
@@ -44,13 +60,15 @@ def genre_detail(request, slug):
 
 
 def item_detail(request, id):
-    item = Item.objects.filter(id=id)
+    item = Item.objects.get(id=id)
+    item.views = item.views + 1
+    item.save()
     return render(request, 'obrazovanie/item_detail.html', context={'item': item})
 
 
 
 def all_reports(request):
-    reports = Report.objects.all()
+    reports = Report.objects.filter(moderation=True)
     genre_all = Genre.objects.all()
 
     # genre = Genre.objects.filter(slug=slug)
@@ -121,3 +139,23 @@ def like_report(request):
         report.likes.add(request.user)
         is_liked=True
     return HttpResponseRedirect(reverse('report_detail_url', kwargs={'id':report.id}))
+
+
+def report_create(request):
+    if request.method == 'POST':
+        form = ReportCreateForm(request.POST)
+        if form.is_valid():
+            report = form.save()
+            report.author = request.user
+            report.save()
+            # if report.status == 'READY':
+            #
+            #
+            return HttpResponseRedirect(reverse('after_writing_post_url'))
+    else:
+        form = ReportCreateForm()
+    return render(request, 'obrazovanie/report_create.html', context={'form':form})
+
+
+def after_writing_post(request):
+    return render(request, 'obrazovanie/after_writing_post.html')

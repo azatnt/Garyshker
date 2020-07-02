@@ -29,6 +29,22 @@
 
 {% block content %}
 
+<div class="res-search">
+  {% csrf_token %}
+  <input id="search_report" type="searh" class="search-food" name="search-food" placeholder="Поиск">
+</div>
+
+
+<div class="header-res">
+  <nav>
+    <ul id="search_results">
+
+    </ul>
+  </nav>
+</div>
+
+
+
   {% for report in reports %}
 
   <a style="text-decoration:none; color:inherit;" href="{% url 'report_detail_url' id=report.id %}">

@@ -2,7 +2,7 @@
 
 
 {% block title %}
-	
+
 	Profile
 
 {% endblock %}
@@ -10,7 +10,7 @@
 
 {% block content %}
 	<div>
-		<img style="width: 190px; height: 150px;" src="{{ user.profile.image.url }}">	
+		<img style="width: 190px; height: 150px;" src="{{ user.profile.image.url }}">
 	</div>
 
 	<div>
@@ -19,12 +19,29 @@
 
 	<div>
 		{{ user.email }}
-	</div>	
+	</div>
 	<div>
 		{{ user.city }}
 	</div>
+	<div class="">
+		<h2>My posts</h2>
+		{% for report in user.report_set.all %}
 
-	
+			<a href="{% url 'report_detail_url' id=report.id %}">
+				<div class="">
+					{{ report.title }}
+				</div>
+			</a>
+
+
+		{% endfor %}
+	</div>
+
+	<div class="">
+		<a href="{% url 'report_create_url' %}">Napisat' post</a>
+	</div>
+
+
 
 
 	<div class=""><button>Изменить</button></div>
@@ -37,7 +54,7 @@
 	      <div>
 	      	Change avatar:{{p_form.image}}
 	      </div>
-	      
+
 	     <div>
 	     	City: {{p_form.city}}
 	     </div>
@@ -48,10 +65,10 @@
 
 	     <div>
 	     	Age: {{p_form.age}}
-	     </div>	     
-	     
+	     </div>
 
-	     
+
+
 	      <button type="submit" name="button">Update</button>
 	    </form>
 	  </div>
@@ -60,4 +77,6 @@
 	<div>
 		<a href="{% url 'logout_url' %}">Logout</a>
 	</div>
+
+
 {% endblock %}

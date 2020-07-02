@@ -10,3 +10,14 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ('content',)
+
+
+
+class ReportCreateForm(forms.ModelForm):
+    class Meta:
+        model = Report
+        fields = {
+            'title',
+            'genre',
+            'body'
+        }
