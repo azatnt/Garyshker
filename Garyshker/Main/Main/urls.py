@@ -18,12 +18,18 @@ from django.urls import path
 from django.conf.urls import include
 from django.conf.urls.static import static
 from django.conf import settings
+from Dobro.admin import dobro_admin_site
+from Obrazovanie.admin import report_admin_site, video_admin_site
+from Garyshker.admin import super_admin_site
 
 
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', super_admin_site.urls),
+    path('dobro_admin', dobro_admin_site.urls),
+    path('report_admin', report_admin_site.urls),
+    path('video_admin', video_admin_site.urls),
     path('', include('Garyshker.urls')),
 
 
