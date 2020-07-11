@@ -56,5 +56,43 @@
 	<script src="{% static 'ajax.js' %}"></script>
 
 
+
+<!-- 
+	<div class="">
+		<span id="insta_count">Insta</span>
+	</div>
+
+<script type="text/javascript">
+		jQuery(function($){
+			$.ajax({
+					url: 'https://api.instagram.com/v1/users/273687124082635/', // если ваше приложение прошло аппрув, вместо self можете указать ID пользователя
+					dataType: 'jsonp',
+					type: 'GET',
+					data: {access_token: 'IGQVJYUHdNQ2xURHg1QlJTV3BQMzRnV1ppT1RqZA1BRWHJZAaGM3bExRQWJnQUxEQVFUZAG5IanFPZAl80N0wxbVhvbkVMOGVYM3VleWpickVkVDZAkTTQwM1FlUnFXRENFbWk5b1lDbVZAZAclFpWnFWZAE11YgZDZD'},
+					success: function(response){
+						$('#insta_count').text(response.data.counts.followed_by); // количество подписчиков
+
+						// $('#insta_count').text(response.data.counts.follows); // количество подписок
+						// $('#insta_count').text(response.data.counts.media); // количество фото и видео в аккаунте
+					}
+				});
+		});
+</script> -->
+
+<!-- <span id="vkontakte_count">Vk</span>
+
+<script>
+    jQuery(function($){
+        $.ajax({
+            url: 'http://api.vk.com/method/users.getFollowers?uid=233162619&count',
+            dataType: "jsonp",
+            success:function(e){
+                $('#vkontakte_count').html(e.response.count)
+            }
+        });
+    });
+</script> -->
+
+
 </body>
 </html>

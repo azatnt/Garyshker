@@ -19,9 +19,11 @@ super_admin_site.register(Item)
 super_admin_site.register(Format)
 super_admin_site.register(Type)
 super_admin_site.register(Profile)
+super_admin_site.register(User)
 
 
-# 
+
+#
 #
 #
 # admin.site.register(Genre)

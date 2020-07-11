@@ -85,6 +85,7 @@ class Item(models.Model):
     created_date = models.DateTimeField(default=timezone.now)
     leading = models.CharField(max_length=120, blank=True)
     views = models.PositiveIntegerField(default=0)
+    clip = models.CharField(blank=True, max_length=120)
 
 
 
