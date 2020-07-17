@@ -3,7 +3,7 @@
 
 
 {% block title %}
-	
+
 	Sdelat' dobro
 
 {% endblock %}
@@ -16,23 +16,23 @@
 			<form class="" action="" method="POST">
 		      {% csrf_token %}
 		      {{u_form}}
-		      
+
 		     <div>
 		     	City: {{p_form.city}}
 		     </div>
 
 			 <div>
 		     	Phone Number: {{p_form.phone}}
-		     </div>    
+		     </div>
 
-		     <div>
-		     	Investment: {{p_form.investment}}
-		     </div>
-		     
-		     <div>
-		     	Your can comment or write smth to us: {{p_form.comments}}
-		     </div>
-		     
+		    <div class="">
+		    	Investment: {{ p_form.investment}}
+		    </div>
+
+				<div class="">
+					You can write comment or smth like that: {{ p_form.comments }}
+				</div>
+
 		      <button type="submit" name="button">Invest</button>
 		    </form>
 		</div>
@@ -41,7 +41,7 @@
 
 		<div>
 			Please login, you can't invest anonymously, it is important to our report!
-			<a href="{% url 'login_url' %}">Login Please</a>		
+			<a href="{% url 'login_url' %}">Login Please</a>
 		</div>
 
 	{% endif %}

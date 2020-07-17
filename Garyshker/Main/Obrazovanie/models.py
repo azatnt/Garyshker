@@ -115,6 +115,8 @@ class Report(models.Model):
     wrote_date = models.DateTimeField(default=timezone.now)
     likes = models.ManyToManyField(User, related_name='likes', blank=True)
     moderation = models.BooleanField("Проверено", default=False)
+    # restrict_comment = models.BooleanField('Ограничить комментарий', default=False)
+    favourite = models.ManyToManyField(User, related_name='favourite', blank=True)
 
 
     def __str__(self):

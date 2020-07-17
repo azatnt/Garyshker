@@ -2,7 +2,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" href="{% static 'style.css' %}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<link rel="stylesheet" href="{% static 'css/style1.css' %}">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 	<title>
 		{% block title %}
@@ -50,14 +52,25 @@
 
 	{% block content %}
 
+	<div class="">
+		<a href="#">
+			<i class="far fa-bookmark"></i>
+		</a>
+	</div>
+
+	<div class="">
+		<i class="far fa-bookmark"></i>
+	</div>
+
 	{% endblock %}
 
-	<script src="{% static 'jquery-3.5.1.min.js' %}"></script>
-	<script src="{% static 'ajax.js' %}"></script>
+	<script src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
+	<script src="{% static 'js/ajax.js' %}"></script>
+	<script src="{% static 'js/main.js' %}"></script>
 
 
 
-<!-- 
+<!--
 	<div class="">
 		<span id="insta_count">Insta</span>
 	</div>
@@ -92,6 +105,28 @@
         });
     });
 </script> -->
+
+<script>
+$(document).ready(function() {
+	$('.comment-btn').click(function(){
+		$('.comment_form').fadeToggle()
+
+		// return false;
+
+});
+});
+</script>
+
+
+<!-- <script>
+$(document).ready(function() {
+	$('#reply_form').click(function(){
+		$(this).next().fadeToggle();
+		});
+	});
+</script> -->
+
+
 
 
 </body>

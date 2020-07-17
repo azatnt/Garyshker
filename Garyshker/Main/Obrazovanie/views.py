@@ -89,9 +89,18 @@ def all_reports(request):
     return render(request, 'obrazovanie/all_reports.html', context)
 
 
+
+
+
+
 def report_detail(request, id):
     report = Report.objects.get(id=id)
     comments = Comment.objects.filter(report=report, reply=None).order_by('-id')
+
+    is_favourite=False
+
+    if report.favourite.filter(id=request.user.id).exists():
+        is_favourite=True
 
     if request.method == 'POST':
         comment_form = CommentForm(request.POST or None)
@@ -111,6 +120,7 @@ def report_detail(request, id):
 
     context = {
         'report': report,
+        'is_favourite': is_favourite,
         'comments': comments,
         'comment_form': comment_form,
 
@@ -157,5 +167,34 @@ def report_create(request):
     return render(request, 'obrazovanie/report_create.html', context={'form':form})
 
 
+
 def after_writing_post(request):
     return render(request, 'obrazovanie/after_writing_post.html')
+
+
+
+def comment_delete(request, id):
+    comment = Comment.objects.get(id=id)
+    comment.delete()
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+def favourite_report(request, id):
+    report = Report.objects.get(id=id)
+    if report.favourite.filter(id=request.user.id).exists():
+        report.favourite.remove(request.user)
+    else:
+        report.favourite.add(request.user)
+
+    return HttpResponseRedirect(reverse('report_detail_url', kwargs={'id':report.id}))
+
+
+
+def favourite_report_list(request):
+    user = request.user
+    favourite_report = user.favourite.all()
+
+    context = {
+        'favourite_report': favourite_report
+    }
+    return render(request, 'obrazovanie/favourite_report_list.html', context)

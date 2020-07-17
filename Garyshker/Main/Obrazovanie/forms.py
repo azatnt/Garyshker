@@ -6,10 +6,11 @@ from django import forms
 
 
 class CommentForm(forms.ModelForm):
-    content = forms.CharField(label='', widget=forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Text goes here!', 'rows':'4', 'cols':'20'}))
+    content = forms.CharField(label='', widget=forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'comment', 'rows':'3', 'cols':'19'}))
     class Meta:
         model = Comment
         fields = ('content',)
+
 
 
 
@@ -21,3 +22,11 @@ class ReportCreateForm(forms.ModelForm):
             'genre',
             'body'
         }
+
+#
+# class CommentEditForm(forms.ModelForm):
+#     class Meta:
+#         model = Comment
+#         fields = {
+#             'content'
+#         }

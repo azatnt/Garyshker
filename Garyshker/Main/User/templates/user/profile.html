@@ -35,6 +35,11 @@
 
 
 		{% endfor %}
+
+		<div class="my_fav_posts">
+			<a href="{% url 'favourite_report_list_url' %}">My favourite posts</a>
+		</div>
+
 	</div>
 
 	<div class="write_post">
@@ -44,9 +49,9 @@
 
 
 
-	<div class=""><button>Изменить</button></div>
+	<div class="btn-change"><button onclick="show_hide()">Изменить</button></div>
 
-	  <div class="">
+	  <div style="display:none;" id="profile_update">
 	    <form class="" action="{% url 'profile_url' %}" method="post" enctype="multipart/form-data">
 	      {% csrf_token %}
 	      {{u_form}}

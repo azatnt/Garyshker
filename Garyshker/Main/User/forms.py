@@ -55,5 +55,6 @@ class CharityAuthorForm(forms.ModelForm):
 			'city',
 			'phone',
 			'investment',
-			'comments'
+			'comments',
+			# 'total_investment'
 		]

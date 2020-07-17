@@ -1,6 +1,8 @@
 from django.contrib import admin
 from django.contrib.admin import AdminSite
 from User.models import *
+from .models import Dobro
+
 
 
 class DobroAdminSite(AdminSite):
@@ -10,3 +12,4 @@ class DobroAdminSite(AdminSite):
 dobro_admin_site = DobroAdminSite('dobro_admin')
 
 dobro_admin_site.register(Profile)
+dobro_admin_site.register(Dobro)

@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+
+  Favourite Reports
+
+{% endblock %}
+
+
+
+
+{% block content %}
+
+<!-- <div class="res-search">
+  {% csrf_token %}
+  <input id="search_report" type="searh" class="search-food" name="search-food" placeholder="Поиск">
+</div>
+
+
+<div class="header-res">
+  <nav>
+    <ul id="search_results">
+
+    </ul>
+  </nav>
+</div> -->
+
+
+
+  {% for report in favourite_report %}
+
+  <a style="text-decoration:none; color:inherit;" href="{% url 'report_detail_url' id=report.id %}">
+    <div class="">
+      <h5>{{ report.title }}</h5>
+      {{ report.author }}
+
+
+      <div class="">
+        {{ report.wrote_date }}
+      </div>
+
+
+      <div class="">
+        {{ report.body|truncatechars:240 }}
+      </div>
+    </div>
+  </a>
+
+  {% empty %}
+
+  <h3>Your favourite list is empty</h3>
+
+
+
+
+
+
+
+
+  {% endfor %}
+
+
+
+{% endblock %}

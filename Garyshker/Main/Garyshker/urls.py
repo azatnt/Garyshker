@@ -28,6 +28,9 @@ urlpatterns = [
     path('search-report/', SearchFieldReport.as_view(), name='search_report_url'),
     path('report/create/', report_create, name='report_create_url'),
     path('report_creation/', after_writing_post, name='after_writing_post_url'),
+    path('comment_delete/<int:id>', comment_delete, name='comment_delete_url'),
+    path('favourite_reports/<int:id>', favourite_report, name='favourite_post_url'),
+    path('favourite_reports', favourite_report_list, name='favourite_report_list_url')
 
 
 
