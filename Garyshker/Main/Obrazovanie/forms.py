@@ -17,11 +17,13 @@ class CommentForm(forms.ModelForm):
 class ReportCreateForm(forms.ModelForm):
     class Meta:
         model = Report
-        fields = {
-            'title',
+        fields = (
             'genre',
+            'title',
+            'header',
             'body'
-        }
+        )
+        # field_order = ['genre', 'title', 'body', 'header']
 
 #
 # class CommentEditForm(forms.ModelForm):

@@ -106,7 +106,7 @@
     });
 </script> -->
 
-<script>
+<!-- <script>
 $(document).ready(function() {
 	$('.comment-btn').click(function(){
 		$('.comment_form').fadeToggle()
@@ -115,15 +115,16 @@ $(document).ready(function() {
 
 });
 });
-</script>
+</script> -->
 
 
 <!-- <script>
 $(document).ready(function() {
-	$('#reply_form').click(function(){
-		$(this).next().fadeToggle();
-		});
-	});
+		$('.comment-reply-btn').click(function(event){
+			event.preventDefault();
+			$(this).parent().next('#comment-reply').fadeToggle();
+		})
+	})
 </script> -->
 
 

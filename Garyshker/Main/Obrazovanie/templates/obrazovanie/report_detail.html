@@ -98,36 +98,39 @@
       <blockquote class="blockquote">
         <p class="mb-0"><small>{{ comment.content }}</small></p>
         <footer class="blockquote-footer"><small>by {{ comment.user|capfirst }}| {{ comment.timestamp|timesince }} ago</small>
-          <button type="button" name="button" class="reply-btn btn btn-outline-dark btn-sm">Reply</button>
+          <a class="comment-reply-btn" href=""><button type="button" name="button" class="reply-btn btn btn-outline-dark btn-sm">Reply</button></a>
           {% if user == comment.user %}
           <a href="{% url 'comment_delete_url' id=comment.id %}">Delete</a>
           {% endif %}
         </footer>
+
+        <div id="comment-reply" class="container mt-4" style="display:none;">
+          {% for reply in comment.replies.all %}
+          <blockquote class="blockquote">
+            <p class="mb-0"><small>{{ reply.content }}</small></p>
+            <footer class="blockquote-footer"><small>| by {{ reply.user|capfirst }} | {{ reply.timestamp|timesince }} ago</small></footer>
+          </blockquote>
+          {% endfor %}
+          <div class="comment-reply">
+            <form method="post">
+              {% csrf_token %}
+                <input type="hidden" name="comment_id" value="{{ comment.id }}">
+              {{ comment_form.as_p }}
+              {% if request.user.is_authenticated %}
+                <input type="submit" value="Submit" class="btn btn-outline-success">
+              {% else %}
+                <input type="submit" value="Submit" class="btn btn-outline-success" disabled>
+              {% endif %}
+            </form>
+          </div>
+        </div>
+
       </blockquote>
 
 
 
 
-      <div class="container mt-4">
-        {% for reply in comment.replies.all %}
-        <blockquote class="blockquote">
-          <p class="mb-0"><small>{{ reply.content }}</small></p>
-          <footer class="blockquote-footer"><small>| by {{ reply.user|capfirst }} | {{ reply.timestamp|timesince }} ago</small></footer>
-        </blockquote>
-        {% endfor %}
-        <div class="comment-reply">
-          <form method="post">
-            {% csrf_token %}
-              <input type="hidden" name="comment_id" value="{{ comment.id }}">
-            {{ comment_form.as_p }}
-            {% if request.user.is_authenticated %}
-              <input type="submit" value="Submit" class="btn btn-outline-success">
-            {% else %}
-              <input type="submit" value="Submit" class="btn btn-outline-success" disabled>
-            {% endif %}
-          </form>
-        </div>
-      </div>
+
     </div>
 
 

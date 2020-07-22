@@ -109,6 +109,7 @@ class Report(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     # slug = models.SlugField(blank=True)
     title = models.CharField(max_length=120)
+    header = models.TextField(blank=True, null=True)
     genre = models.ForeignKey(Genre, on_delete=models.CASCADE, blank=True, null=True)
     body = models.TextField(blank=True, null=True)
     # status = models.CharField(max_length=120, choices=STATUS_CHOICES, default='Checking')

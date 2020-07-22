@@ -31,3 +31,22 @@ function show_hide() {
 //     click_reply.style.display = 'none';
 //   }
 // }
+
+
+$(document).ready(function() {
+		$('.comment-reply-btn').click(function(event){
+			event.preventDefault();
+			$(this).parent().next('#comment-reply').fadeToggle();
+		})
+
+
+    $('.comment-btn').click(function(){
+  		$('.comment_form').fadeToggle()
+
+
+  		// return false;
+
+  });
+
+
+	})
