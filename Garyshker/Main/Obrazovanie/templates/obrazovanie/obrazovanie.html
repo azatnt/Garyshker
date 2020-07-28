@@ -29,7 +29,7 @@
 
 {% block content %}
 
-    <div class="res-search">
+    <!-- <div class="res-search">
       {% csrf_token %}
       <input id="search" type="searh" class="search-food" name="search-food" placeholder="Поиск">
     </div>
@@ -41,7 +41,7 @@
 
         </ul>
       </nav>
-    </div>
+    </div> -->
 
 
 
@@ -66,12 +66,12 @@
       <div class="">
         {{ item.genre }}
       </div>
-      <a href="{{ item.clip }}">
+      <a href="{{item.clip}}">
         <div class="">
           <img style="width: 190px; height: 150px;" src="{{ item.image.url }}" alt="">
         </div>
       </a>
-      
+
     </div>
 
     {% endfor %}

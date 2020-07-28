@@ -59,11 +59,11 @@ def genre_detail(request, slug):
     return render(request, 'obrazovanie/genre_detail.html', context={'genre':genre, 'genre_all': genre_all})
 
 
-# def item_detail(request, id):
-#     item = Item.objects.get(id=id)
-#     item.views = item.views + 1
-#     item.save()
-#     return render(request, 'obrazovanie/item_detail.html', context={'item': item})
+def item_detail(request, id):
+    item = Item.objects.get(id=id)
+    item.views = item.views + 1
+    item.save()
+    return render(request, 'obrazovanie/item_detail.html', context={'item': item})
 
 
 
