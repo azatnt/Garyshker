@@ -15,7 +15,40 @@
   <form method="post">
     {% csrf_token %}
 
-    {{ form.as_p }}
+    <div class="">
+        Nazvanie:
+      {{ form.title }}
+    </div>
+
+
+
+
+
+    <div class="">
+      Header: {{ form.header }}
+    </div>
+    <div class="">
+      Tekst: {{ form.body }}
+    </div>
+
+
+    <a href="#">
+      <div class="show">
+        Genre
+      </div>
+
+      <div class="genre">
+        Body
+      </div>
+    </a>
+
+
+    <div class="genre2" style="display:none;">
+      Жанр: {{ form.genre }}
+    </div>
+
+
+
 
     <input type="submit" name="Create" class="btn btn-outline-success">
   </form>

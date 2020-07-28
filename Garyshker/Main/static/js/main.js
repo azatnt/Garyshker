@@ -42,11 +42,22 @@ $(document).ready(function() {
 
     $('.comment-btn').click(function(){
   		$('.comment_form').fadeToggle()
-
-
   		// return false;
+  })
 
-  });
+  $('.choose').click(function(){
+    $('.answer').fadeToggle()
+  })
 
+
+    $('.genre').show(20)
+
+    $('.genre').click(function(){
+      $('.genre2').fadeIn(4000)
+    })
+
+  // setTimeout(function(){
+  //       $('#genre').fadeIn(500);
+  //   }, 5000);
 
 	})
