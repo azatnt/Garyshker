@@ -10,7 +10,14 @@
   border: 1px solid black;
 }
 
-.nurs{
-    margin: 100px;
-    background-color: blue;
+.block{
+    border-radius: 15px; 
+    border: 5px solid red;
+    padding: 6px 6px 10px 6px;
 }
+
+.nurs{
+    border: 3px solid blue;
+    
+}
+

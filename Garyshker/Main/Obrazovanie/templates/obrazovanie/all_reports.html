@@ -16,13 +16,12 @@
   {% endfor %}
 
 
-    <div class="">
+    <div class="two_but">
       <a href="{% url 'obrazovanie_url' %}">Смотреть</a>
 
 
       <a href="{% url 'all_reports_url' %}">Читать</a>
     </div>
-
 
 {% endblock %}
 
@@ -47,29 +46,21 @@
 
   {% for report in reports %}
 
-  <a style="text-decoration:none; color:inherit;" href="{% url 'report_detail_url' id=report.id %}">
-    <div class="">
+  <a style="text-decoration:none; color:inherit;" href="{% url 'report_detail_url' id=report.id %}" class="blocks">
+    <div class="block">
       <h5>{{ report.title }}</h5>
-      {{ report.author }}
+       <!-- {{ report.author }} -->
 
+          <div class="">
+           <!-- {{ report.wrote_date }} -->
+          </div>
 
-      <div class="aza">
-        {{ report.wrote_date }}
-      </div>
+          <div class="nurs">
+            <!-- {{ report.body|truncatechars:240 }} -->
+          </div>
 
-
-      <div class="nurs">
-        {{ report.body|truncatechars:240 }}
-      </div>
     </div>
   </a>
-
-
-
-
-
-
-
 
   {% endfor %}
 
