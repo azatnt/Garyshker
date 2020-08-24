@@ -7,7 +7,7 @@
 }
 
 .my_fav_posts{
-  border: 1px solid black;
+  border: 1px solid red;
 }
 
 .blocks{
@@ -22,11 +22,16 @@
     
     
     border-radius: 15px; 
-    border: 5px solid black;
+    border: 5px solid red;
     padding: 6px 6px 10px 6px;
     
     margin-bottom: 5px;
 } 
 
 .nurs{
+}
+
+/*button watch read*/
+.two_but a{
+  color: #fcc419;
 }

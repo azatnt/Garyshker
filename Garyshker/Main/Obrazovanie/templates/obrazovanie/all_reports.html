@@ -28,11 +28,13 @@
 
 {% block content %}
 
+<!-- Мен, Нурсат уакытша комменттеп койдым поиск болмайтын болды
+
 <div class="res-search">
   {% csrf_token %}
   <input id="search_report" type="searh" class="search-food" name="search-food" placeholder="Поиск">
 </div>
-
+-->
 
 <div class="header-res">
   <nav>
@@ -43,11 +45,14 @@
 </div>
 
 
+<!-- контейнер ашайын деп едим -->
+
+<div class="container">
 
   {% for report in reports %}
 
   <a style="text-decoration:none; color:inherit;" href="{% url 'report_detail_url' id=report.id %}" class="blocks">
-    <div class="block">
+    <div class="block mr">
       <h5>{{ report.title }}</h5>
        <!-- {{ report.author }} -->
 
@@ -62,8 +67,11 @@
     </div>
   </a>
 
-  {% endfor %}
+
+  {% endfor %} 
 
 
 
 {% endblock %}
+
+</div>
