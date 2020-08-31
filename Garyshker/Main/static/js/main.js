@@ -32,32 +32,50 @@ function show_hide() {
 //   }
 // }
 
+// function show_hide1(){
+//   var click = document.getElementById('comment_form');
+//   if(click.style.display === 'none'){
+//     click.style.display = 'block';
+//   }else{
+//     click.style.display = 'none';
+//   }
+// }
 
-$(document).ready(function() {
-		$('.comment-reply-btn').click(function(event){
-			event.preventDefault();
-			$(this).parent().next('#comment-reply').fadeToggle();
-		})
+// $(document).ready(function() {
+// 		$('.comment-reply-btn').click(function(event){
+// 			event.preventDefault();
+// 			$(this).parent().next('#comment-reply').fadeToggle();
+// 		})
+//   })
+
+$(document).on('click', '.comment-reply-btn', function(event){
+  event.preventDefault();
+  $(this).parent().next('#comment-reply').fadeToggle();
+})
 
 
-    $('.comment-btn').click(function(){
-  		$('.comment_form').fadeToggle()
-  		// return false;
-  })
-
-  $('.choose').click(function(){
-    $('.answer').fadeToggle()
-  })
 
 
-    $('.genre').show(20)
+  $('.comment-btn').click(function(){
+    // event.preventDefault();
+    console.log('works');
+    $('.comment_form').fadeToggle();
+    // return false;
+  });
 
-    $('.genre').click(function(){
-      $('.genre2').fadeIn(4000)
-    })
+
+  //
+  // $('.choose').click(function(){
+  //   $('.answer').fadeToggle()
+  // })
+  //
+  //
+  //   $('.genre').show(20)
+  //
+  //   $('.genre').click(function(){
+  //     $('.genre2').fadeIn(4000)
+  //   })
 
   // setTimeout(function(){
   //       $('#genre').fadeIn(500);
   //   }, 5000);
-
-	})

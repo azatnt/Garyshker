@@ -34,11 +34,18 @@
 
     <h5>{{ report.title }}</h5>
     {{ report.author }}
+    {% if is_favourite %}
+      <a href="{% url 'favourite_post_url' id=report.id %}">
+        <i class="far fa-bookmark"></i>
+      </a>
 
+    {% else %}
       <a href="{% url 'favourite_post_url' id=report.id %}">
         <i class="fas fa-bookmark fa-lg"></i>
-        {{ report.favourite.count }}
       </a>
+
+      <!-- {{ report.favourite.count }} -->
+    {% endif %}
 
     <div class="">
       {{ report.wrote_date }}
@@ -48,22 +55,12 @@
     <div class="">
       {{ report.body }}
     </div>
-    {% if request.user.is_authenticated %}
 
-    <form action="{% url 'likes_url' %}" method="post">
-        {% csrf_token %}
 
-          <button type="submit" name="post_id" value="{{report.id}}">Like</button>
 
-        {{ report.likes.count }}
-    </form>
-
-    {% else %}
-
-    <button type="" name="post_id" value="{{report.id}}">Like</button>
-      {{ report.likes.count }}
-
-    {% endif %}
+<div id="like-section">
+  {% include 'obrazovanie/like_section.html' %}
+</div>
 
 
 
@@ -72,69 +69,8 @@
 
 
 
-  <div class="">
-    <div class="container-fluid mt-2">
-      <div class="form-group row">
-        <form method="post">
-          {% csrf_token %}
-          {{ comment_form.as_p }}
-          {% if request.user.is_authenticated %}
-            <input type="submit" value="Submit" class="btn btn-outline-success">
-          {% else %}
-            <input type="submit" value="Submit" class="btn btn-outline-success" disabled>
-          {% endif %}
-        </form>
-      </div>
-    </div>
-
-    <a href="#" class="comment-btn">
-      {{ comments.count }} Comment{{ comments|pluralize }}
-    </a>
-
-
-    {% for comment in comments %}
-
-    <div class="comment_form" style="display:none;">
-      <blockquote class="blockquote">
-        <p class="mb-0"><small>{{ comment.content }}</small></p>
-        <footer class="blockquote-footer"><small>by {{ comment.user|capfirst }}| {{ comment.timestamp|timesince }} ago</small>
-          <a class="comment-reply-btn" href=""><button type="button" name="button" class="reply-btn btn btn-outline-dark btn-sm">Reply</button></a>
-          {% if user == comment.user %}
-          <a href="{% url 'comment_delete_url' id=comment.id %}">Delete</a>
-          {% endif %}
-        </footer>
-
-        <div id="comment-reply" class="container mt-4" style="display:none;">
-          {% for reply in comment.replies.all %}
-          <blockquote class="blockquote">
-            <p class="mb-0"><small>{{ reply.content }}</small></p>
-            <footer class="blockquote-footer"><small>| by {{ reply.user|capfirst }} | {{ reply.timestamp|timesince }} ago</small></footer>
-          </blockquote>
-          {% endfor %}
-          <div class="comment-reply">
-            <form method="post">
-              {% csrf_token %}
-                <input type="hidden" name="comment_id" value="{{ comment.id }}">
-              {{ comment_form.as_p }}
-              {% if request.user.is_authenticated %}
-                <input type="submit" value="Submit" class="btn btn-outline-success">
-              {% else %}
-                <input type="submit" value="Submit" class="btn btn-outline-success" disabled>
-              {% endif %}
-            </form>
-          </div>
-        </div>
-
-      </blockquote>
-
-
-
-
-
-    </div>
-
-
-    {% endfor %}
-  </div>
+<div class="main-comment-section">
+  {% include 'obrazovanie/comments.html' %}
+</div>
 
 {% endblock %}

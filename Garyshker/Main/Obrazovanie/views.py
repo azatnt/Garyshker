@@ -4,6 +4,8 @@ from django.urls import reverse
 from .forms import *
 from django.views.generic import View
 from django.db.models import F
+from django.template.loader import render_to_string
+from django.http import JsonResponse
 
 
 
@@ -97,8 +99,12 @@ def report_detail(request, id):
     report = Report.objects.get(id=id)
     comments = Comment.objects.filter(report=report, reply=None).order_by('-id')
 
-    is_favourite=False
+    is_liked = False
+    if report.likes.filter(id=request.user.id).exists():
+        is_liked=True
 
+
+    is_favourite=False
     if report.favourite.filter(id=request.user.id).exists():
         is_favourite=True
 
@@ -123,8 +129,13 @@ def report_detail(request, id):
         'is_favourite': is_favourite,
         'comments': comments,
         'comment_form': comment_form,
+        'is_liked': is_liked
 
     }
+
+    if request.is_ajax():
+        html = render_to_string('obrazovanie/comments.html', context, request=request)
+        return JsonResponse({'form':html})
 
     return render(request, 'obrazovanie/report_detail.html', context)
 
@@ -132,15 +143,14 @@ def report_detail(request, id):
 def genre_detail_report(request, slug):
     genre_all = Genre.objects.all()
     genre = Genre.objects.filter(slug=slug)
-    # is_liked = False
-    # if report.likes.filter(id=request.user.id).exists():
-    #     is_liked=True
+
     return render(request, 'obrazovanie/genre_detail_report.html', context={'genre': genre, 'genre_all':genre_all})
 
 
 
 def like_report(request):
-    report = Report.objects.get(id=request.POST.get('post_id'))
+    # report = Report.objects.get(id=request.POST.get('report_id'))
+    report = Report.objects.get(id=request.POST.get('id'))
     is_liked = False
     if report.likes.filter(id=request.user.id).exists():
         report.likes.remove(request.user)
@@ -148,7 +158,16 @@ def like_report(request):
     else:
         report.likes.add(request.user)
         is_liked=True
-    return HttpResponseRedirect(reverse('report_detail_url', kwargs={'id':report.id}))
+
+    context = {
+        'report': report,
+        'is_liked': is_liked
+
+    }
+    if request.is_ajax():
+        html = render_to_string('obrazovanie/like_section.html', context, request=request)
+        return JsonResponse({'form':html})
+    # return HttpResponseRedirect(reverse('report_detail_url', kwargs={'id':report.id}))
 
 
 def report_create(request):

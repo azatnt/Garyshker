@@ -8,6 +8,7 @@ from django.contrib.admin import AdminSite
 class MainAdmin(AdminSite):
     site_header = 'Super Admin'
     index_title = 'Welcome, Super Admin'
+    password = 'Admin12345'
 
 super_admin_site = MainAdmin('super_admin')
 
