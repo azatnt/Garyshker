@@ -109,6 +109,7 @@ class Report(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     # slug = models.SlugField(blank=True)
     title = models.CharField(max_length=120)
+    image = models.ImageField(blank=True, upload_to='item-image')
     header = models.TextField(blank=True, null=True)
     genre = models.ForeignKey(Genre, on_delete=models.CASCADE, blank=True, null=True)
     body = models.TextField(blank=True, null=True)

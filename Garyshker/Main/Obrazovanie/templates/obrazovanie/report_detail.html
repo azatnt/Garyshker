@@ -34,18 +34,9 @@
 
     <h5>{{ report.title }}</h5>
     {{ report.author }}
-    {% if is_favourite %}
-      <a href="{% url 'favourite_post_url' id=report.id %}">
-        <i class="far fa-bookmark"></i>
-      </a>
 
-    {% else %}
-      <a href="{% url 'favourite_post_url' id=report.id %}">
-        <i class="fas fa-bookmark fa-lg"></i>
-      </a>
+  
 
-      <!-- {{ report.favourite.count }} -->
-    {% endif %}
 
     <div class="">
       {{ report.wrote_date }}

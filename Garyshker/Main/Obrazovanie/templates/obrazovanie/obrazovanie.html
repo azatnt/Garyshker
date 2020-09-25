@@ -8,21 +8,17 @@
 {% endblock %}
 
 {% block subtitle %}
-
-
-  {% for genre in genre %}
-    <a href="{% url 'genre_detail_url' slug=genre.slug %}">{{ genre.name }}</a>
-  {% endfor %}
-
-  <div class="">
-    <a href="{% url 'obrazovanie_url' %}">Смотреть</a>
-
-
-    <a href="{% url 'all_reports_url' %}">Читать</a>
+  <div class="item-genre">
+    <div class="item-type">
+      {% with url_name=request.resolver_match.url_name %}
+        <a class="active" style="text-decoration:none;" href="{% url 'obrazovanie_url' %}">Смотреть</a>
+        <a class="{% if url_name == 'all_reports_url' %}active{% endif %}" style="text-decoration: none;" href="{% url 'all_reports_url' %}">Читать</a>
+      {% endwith %}
+    </div>
+      {% for genre in genre %}
+        <a style="text-decoration:none;" href="{% url 'genre_detail_url' slug=genre.slug %}">{{ genre.name }}</a>
+        {% endfor %}
   </div>
-
-
-
 {% endblock %}
 
 
@@ -44,39 +40,31 @@
     </div> -->
 
 
-
-  {% for type in type %}
-
-
-    <h3>{{ type.name }}</h3>
-
-    {% for item in type.item_set.all %}
-
-      <div class="">
-
-      {{ item.name }}
-      <div class="">
-        {{ item.number_of_item }}
-      </div>
-
-      <div class="">
-        {{ item.guest }}
-      </div>
-
-      <div class="">
-        {{ item.genre }}
-      </div>
-      <a href="{{item.clip}}">
-        <div class="">
-          <img style="width: 190px; height: 150px;" src="{{ item.image.url }}" alt="">
+<div class="container-obr">
+ {% for type in type %}
+  <h3 class="type-name-obr">{{ type.name }}</h3>
+    <div class="item-obr">
+      {% for item in type.item_set.all %}
+        <div class="item">
+          <a href="{{item.clip}}" style="text-decoration:none;">
+            <div class="item-detail" style="background:url('{{item.image.url}}')">
+              <div class="item-name">
+                <div class="item-topic">
+                  {{ item.name }}
+                </div>
+                <div class="item-body">
+                    #{{ item.number_of_item }}|
+                    Тема: {{ item.genre }}
+                    {{ item.guest }}
+                </div>
+              </div>
+            </div>
+          </a>
         </div>
-      </a>
-
+      {% endfor %}
     </div>
-
-    {% endfor %}
-
   {% endfor %}
+</div>
 
 
 

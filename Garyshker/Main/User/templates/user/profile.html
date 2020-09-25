@@ -23,7 +23,7 @@
 	<div>
 		{{ user.city }}
 	</div>
-	<div class="">
+	<div class="my_posts">
 		<h2>My posts</h2>
 		{% for report in user.report_set.all %}
 
@@ -36,9 +36,7 @@
 
 		{% endfor %}
 
-		<div class="my_fav_posts">
-			<a href="{% url 'favourite_report_list_url' %}">My favourite posts</a>
-		</div>
+
 
 	</div>
 

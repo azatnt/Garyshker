@@ -10,18 +10,30 @@
 
 {% block subtitle %}
 
+<div class="item-genre">
+  <div class="item-type">
+    {% with url_name=request.resolver_match.url_name %}
+      <a class="active" style="text-decoration:none;" href="{% url 'obrazovanie_url' %}">Смотреть</a>
+      <a class="{% if url_name == 'all_reports_url' %}active{% endif %}" style="text-decoration: none;" href="{% url 'all_reports_url' %}">Читать</a>
+    {% endwith %}
+  </div>
+    {% for genre in genre_all %}
+      <a style="text-decoration:none;" href="{% url 'genre_detail_reports_url' slug=genre.slug %}">{{ genre.name }}</a>
+      {% endfor %}
+</div>
 
-  {% for genre in genre_all %}
+
+  <!-- {% for genre in genre_all %}
     <a href="{% url 'genre_detail_reports_url' slug=genre.slug %}">{{ genre.name }}</a>
   {% endfor %}
 
 
     <div class="two_but">
-      <a href="{% url 'obrazovanie_url' %}">Смотреть</a>
+      <a class="di" href="{% url 'obrazovanie_url' %}">Смотреть</a>
 
 
       <a href="{% url 'all_reports_url' %}">Читать</a>
-    </div>
+    </div> -->
 
 {% endblock %}
 
@@ -30,7 +42,7 @@
 
 <!-- Мен, Нурсат уакытша комменттеп койдым поиск болмайтын болды -->
 
-<div class="res-search">
+<!-- <div class="res-search">
   {% csrf_token %}
   <input id="search_report" type="searh" class="search-food" name="search-food" placeholder="Поиск">
 </div>
@@ -42,27 +54,42 @@
 
     </ul>
   </nav>
-</div>
+</div> -->
 
 
 <!-- контейнер ашайын деп едим -->
 
-<div class="container">
+<div class="container-report">
 
   {% for report in reports %}
 
-  <a style="text-decoration:none; color:inherit;" href="{% url 'report_detail_url' id=report.id %}" class="blocks">
-    <div class="block mr">
-      <h5>{{ report.title }}</h5>
-       <!-- {{ report.author }} -->
+  <a href="{% url 'report_detail_url' id=report.id %}">
+    <div class="report">
 
-          <div class="">
-           <!-- {{ report.wrote_date }} -->
+
+         <!-- {{ report.author }} -->
+         <div class="report-detail">
+
+           <div class="report-image" style="background:url('{{report.image.url}}')">
+
+           </div>
+          <div class="report-title">
+            <h5>{{ report.title }}</h5>
           </div>
 
-          <div class="nurs">
-            <!-- {{ report.body|truncatechars:240 }} -->
-          </div>
+
+
+
+           <div class="">
+            <!-- {{ report.wrote_date }} -->
+           </div>
+
+           <div class="nurs">
+             <!-- {{ report.body|truncatechars:240 }} -->
+           </div>
+         </div>
+
+
 
     </div>
   </a>
@@ -71,7 +98,5 @@
   {% endfor %}
 
 
-
-{% endblock %}
-
 </div>
+{% endblock %}

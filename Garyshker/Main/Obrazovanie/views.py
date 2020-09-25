@@ -79,9 +79,6 @@ def all_reports(request):
     #     is_liked=True
 
 
-
-
-
     context = {
         'reports': reports,
         'genre_all': genre_all,
@@ -148,6 +145,7 @@ def genre_detail_report(request, slug):
 
 
 
+
 def like_report(request):
     # report = Report.objects.get(id=request.POST.get('report_id'))
     report = Report.objects.get(id=request.POST.get('id'))
@@ -196,24 +194,3 @@ def comment_delete(request, id):
     comment = Comment.objects.get(id=id)
     comment.delete()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-
-
-def favourite_report(request, id):
-    report = Report.objects.get(id=id)
-    if report.favourite.filter(id=request.user.id).exists():
-        report.favourite.remove(request.user)
-    else:
-        report.favourite.add(request.user)
-
-    return HttpResponseRedirect(reverse('report_detail_url', kwargs={'id':report.id}))
-
-
-
-def favourite_report_list(request):
-    user = request.user
-    favourite_report = user.favourite.all()
-
-    context = {
-        'favourite_report': favourite_report
-    }
-    return render(request, 'obrazovanie/favourite_report_list.html', context)
