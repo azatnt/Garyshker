@@ -46,6 +46,15 @@ def profiles(request):
 
 
 
+def someone_profile(request, id):
+	profile = User.objects.get(id=id)
+	# print(profile.user)
+	context = {
+		'profile':profile
+	}
+	return render(request, 'user/someone_profile.html', context)
+
+
 # def profile(request):
 # 	profile = Profile.objects.get_or_create(user=request.user)
 # 	if request.method == 'POST':

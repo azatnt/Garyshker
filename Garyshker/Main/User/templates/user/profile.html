@@ -9,77 +9,95 @@
 
 
 {% block content %}
-	<div>
-		<img style="width: 190px; height: 150px;" src="{{ user.profile.image.url }}">
-	</div>
+<div class="container-profile">
+	<div class="profile-img">
+ 	 <img src="{{ user.profile.image.url }}">
+  </div>
+ <div class="sub-container">
+	 <div class="profile-username">
+	  @{{ user.username }}
 
-	<div>
-		{{ user.username }}
-	</div>
+	  <!-- {{ user.email }}
+	  {{ user.city }} -->
+	 </div>
 
-	<div>
-		{{ user.email }}
-	</div>
-	<div>
-		{{ user.city }}
-	</div>
-	<div class="my_posts">
-		<h2>My posts</h2>
-		{% for report in user.report_set.all %}
+	 <div class="btn-change">
+		 <button onclick="show_hide()">Изменить</button>
+		 <div style="display:none;" id="profile_update">
+			 <form class="" action="{% url 'profile_url' %}" method="post" enctype="multipart/form-data">
+				 {% csrf_token %}
+				 {{u_form}}
 
-			<a href="{% url 'report_detail_url' id=report.id %}">
-				<div class="">
-					{{ report.title }}
+				 <div>
+					 Change avatar:{{p_form.image}}
+				 </div>
+
+				<div>
+				 City: {{p_form.city}}
 				</div>
-			</a>
 
+			<div>
+				 Phone Number: {{p_form.phone}}
+				</div>
 
-		{% endfor %}
-
-
-
-	</div>
-
-	<div class="write_post">
-		<a href="{% url 'report_create_url' %}">Napisat' post</a>
-	</div>
+				<div>
+				 Age: {{p_form.age}}
+				</div>
 
 
 
-
-	<div class="btn-change"><button onclick="show_hide()">Изменить</button></div>
-
-	  <div style="display:none;" id="profile_update">
-	    <form class="" action="{% url 'profile_url' %}" method="post" enctype="multipart/form-data">
-	      {% csrf_token %}
-	      {{u_form}}
-
-	      <div>
-	      	Change avatar:{{p_form.image}}
-	      </div>
-
-	     <div>
-	     	City: {{p_form.city}}
-	     </div>
-
-		 <div>
-	     	Phone Number: {{p_form.phone}}
-	     </div>
-
-	     <div>
-	     	Age: {{p_form.age}}
-	     </div>
+				 <button type="submit" name="button">Update</button>
+			 </form>
+		 </div>
+	 </div>
 
 
 
-	      <button type="submit" name="button">Update</button>
-	    </form>
-	  </div>
 
 
-	<div>
-		<a href="{% url 'logout_url' %}">Logout</a>
-	</div>
+	 <div class="write_post">
+  	 <a style="text-decoration:none;" href="{% url 'report_create_url' %}">Napisat' post</a>
+   </div>
+
+
+	 <div class="my_posts">
+		 <h2>Статьи</h2>
+		 {% for report in user.report_set.all %}
+
+			 <a style="text-decoration:none;" href="{% url 'report_detail_url' id=report.id %}">
+				 <div class="report-name">
+					 {{ report.title }}
+				 </div>
+			 </a>
+
+
+		 {% endfor %}
+
+	 </div>
+
+
+
+
+
+   <div class="profile-logout">
+  	 <a style="text-decoration:none;" href="{% url 'logout_url' %}">Выйти</a>
+   </div>
+ </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
 
 
 {% endblock %}

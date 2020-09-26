@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+
+	Profile
+
+{% endblock %}
+
+
+{% block content %}
+
+
+
+	<div>
+		<img style="width: 190px; height: 150px;" src="{{ profile.profile.image.url }}">
+	</div>
+
+
+
+	<div>
+		{{ profile.email }}
+	</div>
+	<div>
+		{{ profile.city }}
+	</div>
+	<div class="my_posts">
+		<h2>Posts of {{ profile.username }}</h2>
+		{% for report in profile.report_set.all %}
+
+			<a href="{% url 'report_detail_url' id=report.id %}">
+				<div class="">
+					{{ report.title }}
+				</div>
+			</a>
+
+
+		{% endfor %}
+
+
+	</div>
+
+
+
+{% endblock %}

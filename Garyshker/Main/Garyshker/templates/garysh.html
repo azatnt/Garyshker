@@ -8,14 +8,20 @@
 
 
 {% block content %}
+<div class="base-container">
+	<h1 id="logo" class="animate__animated animate__fadeInDown">GARYSHKER.</h1>
+	<div class="intro">
+		<div class="intro-obr">
+			<a style="text-decoration:none; color:white;" class="text-decoration:none;" href="{% url 'charity_url' %}"><h5 class="animate__animated animate__fadeInUp">Добро</h5></a>
+		</div>
 
-	<div>
-		<a href="{% url 'charity_url' %}">Dobro</a>
+
+		<div class="intro-obr">
+			<a style="text-decoration:none; color:white;" href="{% url 'obrazovanie_url' %}"><h5 class="animate__animated animate__fadeInUp">Образование</h5></a>
+		</div>
 	</div>
 
+</div>
 
-	<div>
-		<a href="{% url 'obrazovanie_url' %}">Obrazovanie</a>
-	</div>
 
 {% endblock %}

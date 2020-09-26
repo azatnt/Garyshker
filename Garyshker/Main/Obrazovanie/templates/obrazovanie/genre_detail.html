@@ -10,7 +10,7 @@
 
 {% block subtitle %}
 
-{% for genre in genre_all %}
+<!-- {% for genre in genre_all %}
 
   <a href="{% url 'genre_detail_url' slug=genre.slug %}">{{ genre.name }}</a>
 
@@ -20,6 +20,17 @@
     <a href="{% url 'obrazovanie_url' %}">Смотреть</a>
 
     <a href="{% url 'obrazovanie_url' %}">Читать</a>
+  </div> -->
+
+
+  <div class="item-genre">
+    <div class="item-type">
+        <a class="active" style="text-decoration:none;" href="{% url 'obrazovanie_url' %}">Смотреть</a>
+        <a class="{% if url_name == 'all_reports_url' %}active{% endif %}" style="text-decoration: none;" href="{% url 'all_reports_url' %}">Читать</a>
+    </div>
+      {% for genre in genre_all %}
+        <a style="text-decoration:none;" href="{% url 'genre_detail_url' slug=genre.slug %}">{{ genre.name }}</a>
+        {% endfor %}
   </div>
 
 

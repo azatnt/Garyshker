@@ -63,36 +63,27 @@
 
   {% for report in reports %}
 
-  <a href="{% url 'report_detail_url' id=report.id %}">
+
     <div class="report">
-
-
-         <!-- {{ report.author }} -->
          <div class="report-detail">
-
+           <a style="text-decoration: none;" href="{% url 'report_detail_url' id=report.id %}">
            <div class="report-image" style="background:url('{{report.image.url}}')">
 
            </div>
-          <div class="report-title">
-            <h5>{{ report.title }}</h5>
-          </div>
+            <div class="report-title">
+                {{ report.title }}
+            </div>
+            </a>
+            <div class="report-author">
+              <a style="text-decoration:none; color:;" href="{% url 'someone_profile_url' id=report.author.id %}">by: @{{ report.author }}</a>
+            </div>
 
-
-
-
-           <div class="">
-            <!-- {{ report.wrote_date }} -->
-           </div>
-
-           <div class="nurs">
-             <!-- {{ report.body|truncatechars:240 }} -->
-           </div>
          </div>
 
 
 
     </div>
-  </a>
+
 
 
   {% endfor %}

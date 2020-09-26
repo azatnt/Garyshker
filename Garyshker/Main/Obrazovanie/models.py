@@ -51,6 +51,7 @@ class Genre(models.Model):
         super().save(*args, **kwargs)
 
 
+
 class Format(models.Model):
     name = models.CharField(max_length=120)
 
@@ -58,16 +59,6 @@ class Format(models.Model):
     def __str__(self):
         return str(self.name)
 
-
-
-# class VideoPost(models.Model):
-#     title = models.CharField(max_length=120)
-#     text = models.TextField(blank=True, null=True)
-#     clip = models.FileField(upload_to='item-videos')
-#     created_date = models.DateTimeField(default=timezone.now)
-#
-#     def __str__(self):
-#         return str(self.title)
 
 
 
@@ -94,22 +85,13 @@ class Item(models.Model):
         return str(self.name)
 
 
-    # def save(self, *args, **kwargs):
-    #     if not self.id:
-    #         self.slug = gen_slug(self.name)
-    #     super().save(*args, **kwargs)
-
-# STATUS_CHOICES = (
-#     ('CHECKING', 'CHECKING'),
-#     ('READY', 'READY'),
-# )
 
 
 class Report(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     # slug = models.SlugField(blank=True)
     title = models.CharField(max_length=120)
-    image = models.ImageField(blank=True, upload_to='item-image')
+    image = models.ImageField(blank=True, upload_to='report-image')
     header = models.TextField(blank=True, null=True)
     genre = models.ForeignKey(Genre, on_delete=models.CASCADE, blank=True, null=True)
     body = models.TextField(blank=True, null=True)
@@ -125,10 +107,6 @@ class Report(models.Model):
         return str(self.title)
 
 
-    def save(self, *args, **kwargs):
-        if not self.id:
-            self.slug = gen_slug(self.title)
-        super().save(*args, **kwargs)
 
 
 

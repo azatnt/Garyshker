@@ -71,6 +71,7 @@ def item_detail(request, id):
 
 def all_reports(request):
     reports = Report.objects.filter(moderation=True)
+    # reports = Report.objects.all()
     genre_all = Genre.objects.all()
 
     # genre = Genre.objects.filter(slug=slug)
