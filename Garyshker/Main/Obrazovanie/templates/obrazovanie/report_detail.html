@@ -26,42 +26,54 @@
 
 
 {% block content %}
+  <div class="container-rep-detail">
+    <div class="rep-detail">
 
-  <a href="{% url 'all_reports_url' %}">Back</a>
+      <div class="rep-author-date">
+        <div class="rep-author-img">
+          <img src="{{report.author.profile.image.url}}" alt="">
+        </div>
+        <div class="rep-author">
+          <a style="text-decoration:none;" href="{% url 'someone_profile_url' id=report.author.id %}">
+            @{{ report.author }}
+          </a>
+        </div>
+          <div class="rep-date">
+            {{ report.wrote_date }}
+          </div>
+      </div>
+
+      <div class="rep-title">
+        <h5>{{ report.title }}</h5>
+      </div>
+
+
+
+      <div class="rep-body">
+        <!-- <textarea name="name" rows="19" cols="90"></textarea> -->
+{{ report.body }}
+        <div id="like-section">
+        {% include 'obrazovanie/like_section.html' %}
+        </div>
+        <div class="main-comment-section">
+        {% include 'obrazovanie/comments.html' %}
+        </div>
+      </div>
 
 
 
 
-    <h5>{{ report.title }}</h5>
-    {{ report.author }}
 
 
+    </div>
 
+    <div class="rep-rec">
 
-    <div class="">
-      {{ report.wrote_date }}
     </div>
 
 
-    <div class="">
-      {{ report.body }}
-    </div>
+  </div>
 
 
-
-<div id="like-section">
-  {% include 'obrazovanie/like_section.html' %}
-</div>
-
-
-
-
-
-
-
-
-<div class="main-comment-section">
-  {% include 'obrazovanie/comments.html' %}
-</div>
 
 {% endblock %}
