@@ -1,20 +1,29 @@
 
 <div class="container-fluid mt-2">
   <div class="form-group row">
-    <form method="post" class="comment-form">
+    <form method="post" class="com-form">
       {% csrf_token %}
-      {{ comment_form.as_p }}
-      {% if request.user.is_authenticated %}
-        <input type="submit" value="Submit" class="btn btn-outline-success">
-      {% else %}
-        <input type="submit" value="Submit" class="btn btn-outline-success" disabled>
-      {% endif %}
+        <div class="com-form">
+          <div class="com-form-text">
+            {{ comment_form.as_p }}
+          </div>
+          <div class="com-form-input">
+            {% if request.user.is_authenticated %}
+              <input type="submit" value="ОСТАВИТЬ КОММЕНТАРИЙ" class="btn btn-outline-success">
+            {% else %}
+              <input type="submit" value="ОСТАВИТЬ КОММЕНТАРИЙ" class="btn btn-outline-success" disabled>
+            {% endif %}
+          </div>
+
+        </div>
     </form>
   </div>
 </div>
 
-<a href="#" class="comment-btn"">
-  {{ comments.count }} Comment{{ comments|pluralize }}
+<a style="text-decoration:none;" href="#" class="comment-btn"">
+
+  {{ comments.count }} <i class="fa fa-comment"></i>Комментарий
+  <!-- {{ comments|pluralize }} -->
 </a>
 
 
@@ -22,9 +31,6 @@
 {% for comment in comments %}
 
 <div class="comment_form" id="comment_form" style="display:none">
-
-
-
   <blockquote class="blockquote">
     <p class="mb-0"><small>{{ comment.content }}</small></p>
     <footer class="blockquote-footer"><small>by {{ comment.user|capfirst }}| {{ comment.timestamp|timesince }} ago</small>

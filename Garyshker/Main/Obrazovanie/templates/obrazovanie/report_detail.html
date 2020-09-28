@@ -50,8 +50,8 @@
 
 
       <div class="rep-body">
-        <!-- <textarea name="name" rows="19" cols="90"></textarea> -->
-{{ report.body }}
+        <textarea class="rep-textarea" name="name" rows="19" cols="90">{{ report.body }}</textarea>
+
         <div id="like-section">
         {% include 'obrazovanie/like_section.html' %}
         </div>
@@ -59,12 +59,6 @@
         {% include 'obrazovanie/comments.html' %}
         </div>
       </div>
-
-
-
-
-
-
     </div>
 
     <div class="rep-rec">

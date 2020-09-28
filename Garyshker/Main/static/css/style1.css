@@ -1,19 +1,6 @@
-
-
-
-.write_post {
-  margin-left: 80%;
-  text-align: center;
-  /* border: 1px solid black; */
-  width: 15%;
-
-}
-
-
-
-
 body{
   background-color: black!important;
+  height: 100%;
 }
 
 .container-obr{
@@ -114,6 +101,7 @@ body{
 
 #logo {
   color: white;
+  font-family: sans-serif;
 }
 #logo::first-letter{
   color: orange;
@@ -124,36 +112,355 @@ body{
 }
 
 .container-report{
-  border: 1px solid white;
+  /* border: 1px solid white; */
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   width: 950px;
   margin: 0 auto;
+  margin-top: 90px;
 
 }
 
 .report{
-  border: 1px solid white;
+  /* border: 1px solid white; */
   height: 390px;
 }
 
 .report-detail{
-  border: 1px solid white;
+  /* border: 1px solid white; */
   height: 330px;
   margin-top: 40px;
 
 }
 
 .report-image{
-  border: 1px solid white;
+  /* border: 1px solid white; */
   height: 270px;
   background-size: cover!important;
   width: 250px;
   margin: 0 auto;
 }
 
-/* .report-title{
-  border: 1px solid white;
+.report-title{
+  /* border: 1px solid white; */
   width: 300px;
   margin: 0 auto;
+  text-align: center;
+  color: white;
+}
+.report-author{
+  text-align: center;
+
+}
+
+footer{
+  margin-top: 200px;
+  height: 220px;
+  background-color: #19191A;
+  align-items: center;
+  padding-top: 25px;
+
+}
+.container-footer{
+  display: flex;
+  /* border: 1px solid white; */
+  height: 180px;
+  width: 80%;
+  margin: 0 auto;
+  justify-content: space-between;
+  /* text-align: center; */
+  color: #3D3D40;
+  margin-top: 15px;
+}
+.Main{
+  /* border: 1px solid white; */
+  width: 200px;
+}
+.Dobro{
+  /* border: 1px solid white; */
+  width: 200px;
+}
+.Obrazovanie{
+  /* border: 1px solid white; */
+  width: 200px;
+}
+.Other{
+  /* border: 1px solid white; */
+  width: 200px;
+}
+.Contacts{
+  /* border: 1px solid white; */
+  width: 200px;
+}
+.Social-Media{
+  /* border: 1px solid white; */
+  width: 200px;
+}
+.about-us{
+  /* border: 1px solid white; */
+  margin-top: 40px;
+
+}
+
+.base-container{
+  /* border: 1px solid white; */
+  margin-top: 180px;
+  height: 320px;
+  width: 400px;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 190px;
+}
+
+.intro{
+  display: flex;
+  justify-content: space-around;
+
+}
+
+.intro-obr h5:hover{
+  color: orange;
+}
+
+.container-profile{
+  /* border: 1px solid white; */
+  width: 1200px;
+  margin: 0 auto;
+  height: 700px;
+  padding-top: 100px;
+
+}
+
+.profile-img img{
+  /* border: 1px solid white; */
+  width: 150px;
+  height: 150px;
+  border-radius: 30px;
+}
+
+.profile-username{
+  /* border: 1px solid white; */
+  height: 40px;
+  color: white;
+  font-size: 30px;
+  width: 350px;
+  display: flex;
+}
+.sub-container{
+  display: flex;
+  /* border: 1px solid white; */
+}
+
+.my_posts{
+  /* border: 1px solid white; */
+  width: 400px;
+}
+.report-name{
+  /* border: 1px solid white; */
+  width: 350px;
+  color: white;
+}
+.report-name:hover{
+  color: orange;
+}
+.write_post{
+  /* border: 1px solid white; */
+
+}
+.btn-change{
+  /* border: 1px solid white; */
+  width: 200px;
+  padding-top: 8px;
+}
+.profile-logout a{
+  /* border: 1px solid white; */
+  color: white;
+}
+
+.write_post{
+  /* border: 1px solid white; */
+  width: 150px;
+  padding-top: 8px;
+
+}
+.write_post a{
+  color: white;
+}
+.write_post a:hover{
+  color: orange;
+}
+.my_posts h2{
+  font-size: 30px;
+  color: white;
+}
+.someone-profile{
+  /* border: 1px solid white; */
+  height: 450px;
+}
+.someone-profile-container{
+  /* border: 1px solid white; */
+  width: 50%;
+  margin: 0 auto;
+}
+.someone-profile-img{
+  display: flex;
+  justify-content: space-between;
+  height: 200px;
+}
+.someone-profile-img img{
+  width: 150px;
+  height: 150px;
+  border-radius: 30px;
+}
+.som-prof-info{
+  /* border: 1px solid white; */
+}
+#someone-post{
+  color: white
+}
+#someone-post:hover{
+  color: orange;
+}
+
+
+.container-rep-detail{
+  border: 1px solid white;
+  height: 800px;
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+.rep-detail{
+  border: 1px solid white;
+  width: 65%;
+  /* line-height: 50px; */
+
+
+}
+.rep-rec{
+  border: 1px solid white;
+  width: 30%;
+}
+.rep-author-date{
+  /* border: 1px solid white; */
+  display: flex;
+  width: 38%;
+  justify-content: space-between;
+  align-items: center;
+}
+.rep-author-img img{
+  width: 35px;
+  height: 35px;
+  border-radius: 40px;
+}
+.rep-author a{
+  color: orange;
+  /* font-size: 17px; */
+}
+.rep-date{
+  color: white;
+}
+.rep-title h5{
+  /* border: 1px solid white; */
+  height: 40px;
+  font-size: 26px;
+  color: white;
+}
+#like-section{
+  /* border: 1px solid red; */
+  display: flex;
+
+}
+.like-section{
+  display: flex;
+}
+.like-count{
+  /* border: 1px solid white; */
+  color: white;
+}
+.like-body{
+  /* border: 1px solid white; */
+  align-items: center;
+}
+.rep-textarea{
+  background-color: #19191A;
+  color: white;
+  width: 100%;
+}
+.btn-like{
+  color: orange;
+  border: none;
+  background-color: black;
+  text-align: center;
+  align-items: center;
+  font-size: 17px;
+  font-weight: 400;
+}
+.btn-like2{
+  color: white;
+  border: none;
+  background-color: black;
+  font-size: 17px;
+
+}
+/* .btn-like2 i{
+  color: white;
 } */
+
+
+.com-form{
+  /* border: 1px solid blue; */
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+  background-color: #19191A;
+
+}
+.com-form-input {
+  width: 25%;
+  text-align: center;
+  color: white;
+  height: 40px!important;
+
+}
+.com-form-input input{
+  border: 1px solid orange;
+  width: 100%;
+  font-size: 12px;
+  height: 100%;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+.com-form-input:hover{
+  color: orange;
+  /* border: 1px solid white; */
+  background-color: black;
+}
+
+.com-form-text{
+  width: 65%;
+}
+.com-form-text textarea{
+  border: 1px solid dimgrey;
+  height: 40px!important;
+  background-color: #19191A;
+  /* border: none; */
+  width: 100%;
+}
+.com-form-text textarea::placeholder{
+  font-size: 17px;
+  align-items: center;
+}
+.comment_form{
+  border: 1px solid white;
+}
+.comment-btn{
+  color: white;
+  font-size: 17px;
+}
+.comment-btn:hover{
+  color: orange;
+}
