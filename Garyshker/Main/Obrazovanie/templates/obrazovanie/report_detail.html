@@ -3,7 +3,8 @@
 
 {% block title %}
 
-  Reports
+Образование
+
 
 {% endblock %}
 
@@ -14,14 +15,14 @@
   <div class="item-genre">
     <div class="item-type">
       {% with url_name=request.resolver_match.url_name %}
-        <a class="active" style="text-decoration:none;" href="{% url 'obrazovanie_url' %}">Смотреть </a>
-        <a class="{% if url_name == 'all_reports_url' %}active{% endif %}" style="text-decoration: none;" href="{% url 'all_reports_url' %}">Читать</a>
+        <a class="active" style="text-decoration:none" id="item_ds" href="{% url 'obrazovanie_url' %}">Смотреть </a>
+        <a class="{% if url_name == 'all_reports_url' %}active{% endif %}" id="item_ds" href="{% url 'all_reports_url' %}">Читать</a>
       {% endwith %}
     </div>
     <div class="item-genres">
 
       {% for genre in genre_all %}
-        <a style="text-decoration:none;" href="{% url 'genre_detail_reports_url' slug=genre.slug %}">{{ genre.name }}</a>
+        <a style="text-decoration:none" class="item_ds" href="{% url 'genre_detail_reports_url' slug=genre.slug %}">{{ genre.name }}</a>
         {% endfor %}
     </div>
 
@@ -43,7 +44,7 @@
             <img src="{{report.author.profile.images.url}}" alt="">
           </div>
           <div class="rep-author">
-            <a style="text-decoration:none;" href="{% url 'someone_profile_url' id=report.author.id %}">
+            <a style="text-decoration:none" class="item_ds" href="{% url 'someone_profile_url' id=report.author.id %}">
               @{{ report.author }}
             </a>
           </div>
@@ -71,11 +72,11 @@
       </div>
 
       <div class="rep-rec content">
-        <h5 style="text-align:center; color:orange;">Рекомендуем</h5>
+        <h5 class="reccomend_table">Рекомендуем</h5>
         {% for popular_post in popular_post %}
           <div class="reccomend" >
             <div class="rec">
-              <a href="{% url 'report_detail_url' id=popular_post.id %}" style="text-decoration:none">
+              <a style="text-decoration:none" href="{% url 'report_detail_url' id=popular_post.id %}" class="item_ds">
                 {{ popular_post }}
               </a>
             </div>

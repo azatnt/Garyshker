@@ -1,15 +1,15 @@
 {% if request.user.is_authenticated %}
-<form action="{% url 'likes_url' %}" method="post" style="width:40%;">
+<form action="{% url 'likes_url' %}" method="post" class="like_main">
   {% csrf_token %}
-    <div class="like-section" style=" ">
+    <div class="like-section">
 
-      <div class="like-body" style="width:60%; height:40px; display:flex">
+      <div class="like-body" id="like_count">
         <p class="like-count">{{ report.likes.count }}</p>
 
         {% if is_liked %}
-          <button type="submit" style="outline:0;" id="like" name="report_id" value="{{report.id}}" class="btn-like"><i id="like-rep" class="fa fa-heart">Нравится</i></button>
+          <button type="submit" id="like" name="report_id" value="{{report.id}}" class="btn-like"><i id="like-rep" class="fa fa-heart">Нравится</i></button>
         {% else %}
-          <button style="outline:0;" type="submit" id='like' name="report_id" value="{{report.id}}" class="btn-like2"><i id="like-rep2" class="fa fa-heart">Нравится</i></button>
+          <button type="submit" id='like' name="report_id" value="{{report.id}}" class="btn-like2"><i id="like-rep2" class="fa fa-heart">Нравится</i></button>
         {% endif %}
       </div>
     </div>

@@ -2,20 +2,20 @@
 
 
 {% block title %}
-	Log In
+	Логин
 {% endblock %}
 
 
 {% block content %}
 
 
-<div class="limiter" style="background-color:black">
-		<div class="container-login100" style="background-color:black">
+<div class="limiter" id="main_prof_cont">
+		<div class="container-login100" >
 			<div class="wrap-login100">
-				<form class="login100-form validate-form" style="background-color:black;" method="post">
+				<form class="login100-form validate-form" id="prof_cont2" method="post">
 					{% csrf_token %}
 
-					<span style="color:white; " class="login100-form-title p-b-34">
+					<span id="welcome_prof" class="login100-form-title p-b-34">
 						Добро пожаловать
 					</span>
 
@@ -47,7 +47,7 @@
 					</div> -->
 
 					<div class="w-full text-center" id="login_reg">
-						<a href="{% url 'register_url' %}" class="txt3" style="text-decoration:none;">
+						<a href="{% url 'register_url' %}" class="txt3" id="item_ds">
 							Вы не зарегистрированы?
 						</a>
 					</div>

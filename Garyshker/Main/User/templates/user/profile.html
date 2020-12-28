@@ -4,7 +4,7 @@
 
 {% block title %}
 
-	Profile
+	Профиль
 
 {% endblock %}
 
@@ -14,17 +14,17 @@
 
 
 
-<h2 id="dobro_tech" style="text-align:center; margin-top:80px">Моя страница</h2>
+<h2 id="dobro_tech" class="my_prof_cont">Моя страница</h2>
 
-<div class="card" style="background-color:dimgrey; margin-top:40px">
-	<img src="{{ request.user.profile.images.url }}" style="width:100%">
+<div class="card" id="prof_2">
+	<img src="{{ request.user.profile.images.url }}" class="my_prof_img">
   <h1>@{{ user.username }}</h1>
   <p class="title_profile">{{p_form.phone}}</p>
 	<!-- {{p_form.errors}} -->
-  <p id="write-post"><a style="text-decoration:none; text-decoration:underline" href="{% url 'report_create_url' %}">Написать пост</a></p>
+  <p id="write-post"><a class="my_prof_write_post" href="{% url 'report_create_url' %}">Написать пост</a></p>
 		<h4>Мои посты</h4>
 		{% for report in user.report_set.all %}
-			<a style="text-decoration:none;" href="{% url 'report_detail_url' id=report.id %}">
+			<a id="item_ds" href="{% url 'report_detail_url' id=report.id %}">
 				<div class="report-name">
 					{{ report.title }}
 				</div>

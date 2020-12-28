@@ -3,7 +3,8 @@
 
 {% block title %}
 
-  Obrazovanie
+Образование
+
 
 {% endblock %}
 
@@ -26,10 +27,10 @@
   <div class="item-genre">
     <div class="item-type">
         <li class="active">
-          <a style="text-decoration:none;" href="{% url 'obrazovanie_url' %}">Смотреть </a>
+          <a style="text-decoration:none" id="item_ds" href="{% url 'obrazovanie_url' %}">Смотреть </a>
         </li>
         <li>
-          <a class="nav_genre" id="active_nav" style="text-decoration: none;" href="{% url 'all_reports_url' %}">Читать</a>
+          <a style="text-decoration:none" class="nav_genre" id="active_nav" id="item_ds" href="{% url 'all_reports_url' %}">Читать</a>
         </li>
 
     </div>
@@ -37,7 +38,7 @@
 
       {% for genre in genre_all %}
       <li>
-        <a style="text-decoration:none;" href="{% url 'genre_detail_url' slug=genre.slug %}">{{ genre.name }}</a>
+        <a style="text-decoration:none" id="item_ds" href="{% url 'genre_detail_url' slug=genre.slug %}">{{ genre.name }}</a>
       </li>
         {% endfor %}
     </div>
@@ -55,7 +56,7 @@
     {% for item in genre.item_set.all %}
 
     <div class="item">
-      <a href="{{item.clip}}" style="text-decoration:none;">
+      <a href="{% url 'item_detail_url' id=item.id %}" id="item_ds">
         <div class="item-detail" style="background:url('{{item.image.url}}')">
           <div class="item-name">
             <div class="item-topic">

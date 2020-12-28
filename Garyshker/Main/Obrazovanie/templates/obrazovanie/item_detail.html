@@ -2,6 +2,7 @@
 
 {% block title %}
 
+Образование
 
 
 {% endblock %}
@@ -59,7 +60,7 @@
           <div class="textarea_field">
             <!-- <textarea cols="46" rows="3" name="comments"></textarea> -->
             {% if item.podcast.url %}
-              <audio controls controlsList="nodownload" style="outline:none;">
+              <audio controls controlsList="nodownload" id="audio_podcast">
                 <source src="{{ item.podcast.url }}"/>
               </audio>
               <!-- <iframe src="{{item.podcast.url}}" width="" height=""></iframe> -->

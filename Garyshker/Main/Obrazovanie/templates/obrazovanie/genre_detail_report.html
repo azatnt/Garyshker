@@ -3,7 +3,8 @@
 
 {% block title %}
 
-  Reports
+Образование
+
 
 {% endblock %}
 
@@ -14,9 +15,9 @@
 <div class="item-genre">
   <div class="item-type">
     {% with url_name=request.resolver_match.url_name %}
-      <a class="active" style="text-decoration:none;" href="{% url 'obrazovanie_url' %}">Смотреть </a>
+      <a style="text-decoration:none" class="active" id="item_ds" href="{% url 'obrazovanie_url' %}">Смотреть </a>
       <li class="active">
-        <a class="{% if url_name == 'all_reports_url' %}active{% endif %}" style="text-decoration: none;" href="{% url 'all_reports_url' %}">Читать</a>
+        <a style="text-decoration:none" class="{% if url_name == 'all_reports_url' %}active{% endif %}" id="item_ds" href="{% url 'all_reports_url' %}">Читать</a>
 
       </li>
     {% endwith %}
@@ -25,7 +26,7 @@
 
     {% for genre in genre_all %}
       <li >
-        <a class="menu" style="text-decoration:none;" href="{% url 'genre_detail_reports_url' slug=genre.slug %}">{{ genre.name }}</a>
+        <a style="text-decoration:none" class="menu" sid="item_ds" href="{% url 'genre_detail_reports_url' slug=genre.slug %}">{{ genre.name }}</a>
       </li>
 
       {% endfor %}
@@ -52,7 +53,7 @@
 
 
     <div class="report-detail">
-      <a style="text-decoration: none;" href="{% url 'report_detail_url' id=report.id %}">
+      <a id="item_ds" href="{% url 'report_detail_url' id=report.id %}">
       <div class="report-image" style="background:url('{{report.image.url}}')">
 
       </div>
@@ -61,7 +62,7 @@
        </div>
        </a>
        <div class="report-author">
-         <a style="text-decoration:none; color:;" href="{% url 'someone_profile_url' id=report.author.id %}">by: @{{ report.author }}</a>
+         <a id="item_ds" color:;" href="{% url 'someone_profile_url' id=report.author.id %}">by: @{{ report.author }}</a>
        </div>
     </div>
 

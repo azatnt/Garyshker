@@ -4,53 +4,16 @@
 
 {% block title %}
 
-	Sdelat' dobro
+	Добро
 
 {% endblock %}
 
 
 
 {% block content %}
-	<!-- {% if user.is_authenticated %}
-		<div>
-			<form class="" action="" method="POST">
-		      {% csrf_token %}
-		      {{u_form}}
-
-		     <div>
-		     	City: {{p_form.city}}
-		     </div>
-
-			 <div>
-		     	Phone Number: {{p_form.phone}}
-		     </div>
-
-		    <div class="">
-		    	Investment: {{ p_form.investment}}
-		    </div>
-
-				<div class="">
-					You can write comment or smth like that: {{ p_form.comments }}
-				</div>
-
-		      <button type="submit" name="button">Invest</button>
-		    </form>
-		</div>
 
 
-	{% else %}
-
-		<div>
-			Please login, you can't invest anonymously, it is important to our report!
-			<a href="{% url 'login_url' %}">Login Please</a>
-		</div>
-
-
-
-	{% endif %} -->
-
-
-	<h2 id="dobro_tech" style="text-align:center; margin-top:200px; height:200px;">Проводится техническое обслуживание</h2>
+	<h2 id="dobro_tech" class="dobro_main">Проводится техническое обслуживание</h2>
 
 
 {% endblock %}

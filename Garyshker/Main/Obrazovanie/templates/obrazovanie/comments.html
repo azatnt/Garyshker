@@ -20,7 +20,7 @@
   </div>
 </div>
 
-<a style="text-decoration:none;" href="#" type="submit" class="comment-btn">
+<a style="text-decoration:none" id="item_ds2" href="#" type="submit" class="comment-btn">
 
   {{ comments.count }} <i class="fa fa-comment"></i>Комментарий
   <!-- {{ comments|pluralize }} -->
@@ -30,28 +30,28 @@
 
 {% for comment in comments %}
 
-<div class="comment_form" id="comment_form" style="display:none">
+<div class="comment_form" id="comment_form">
   <blockquote class="blockquote">
-    <p class="mb-0" style="color:white;"><small>{{ comment.content }}</small></p>
+    <p class="mb-0" id="report_ty"><small>{{ comment.content }}</small></p>
     <footer class="blockquote-footer"><small>by {{ comment.user|capfirst }}| {{ comment.timestamp|timesince }} ago</small>
-      <a class="comment-reply-btn" href=""><button type="button" name="button" id="reply_btn" class="reply-btn btn btn-outline-dark btn-sm">Ответить</button></a>
+      <a style="text-decoration:none" class="comment-reply-btn" href=""><button type="button" name="button" id="reply_btn" class="reply-btn btn btn-outline-dark btn-sm">Ответить</button></a>
       {% if user == comment.user %}
-      <a id="com_del_btn" class="btn btn-outline-dark btn-sm" href="{% url 'comment_delete_url' id=comment.id %}">Удалить</a>
+      <a style="text-decoration:none" id="com_del_btn" class="btn btn-outline-dark btn-sm" href="{% url 'comment_delete_url' id=comment.id %}">Удалить</a>
       {% endif %}
     </footer>
 
     <div id="comment-reply" class="container mt-4" style="display:none;">
       {% for reply in comment.replies.all %}
       <blockquote class="blockquote">
-        <p class="mb-0" style="color:white;"><small>{{ reply.content }}</small></p>
+        <p class="mb-0" id="report_ty"><small>{{ reply.content }}</small></p>
         <footer class="blockquote-footer"><small>| by {{ reply.user|capfirst }} | {{ reply.timestamp|timesince }} ago</small></footer>
       </blockquote>
       {% endfor %}
       <div class="comment-reply">
-        <form method="post" class="reply-form" style="display:flex; justify-content:space-between;">
+        <form method="post" class="reply-form">
           {% csrf_token %}
             <input type="hidden" name="comment_id" value="{{ comment.id }}">
-            <div class="" style="width:67%;">
+            <div class="com_re">
               {{ comment_form.as_p }}
 
             </div>
