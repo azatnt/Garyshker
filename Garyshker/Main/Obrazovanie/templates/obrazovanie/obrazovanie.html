@@ -9,15 +9,25 @@
 
 {% block subtitle %}
   <div class="item-genre">
-    <div class="item-type">
-      {% with url_name=request.resolver_match.url_name %}
-        <a class="active" style="text-decoration:none;" href="{% url 'obrazovanie_url' %}">Смотреть</a>
-        <a class="{% if url_name == 'all_reports_url' %}active{% endif %}" style="text-decoration: none;" href="{% url 'all_reports_url' %}">Читать</a>
-      {% endwith %}
-    </div>
-      {% for genre in genre %}
-        <a style="text-decoration:none;" href="{% url 'genre_detail_url' slug=genre.slug %}">{{ genre.name }}</a>
-        {% endfor %}
+      <div class="item-type">
+          <li class="active">
+            <a style="text-decoration:none;" href="{% url 'obrazovanie_url' %}">Смотреть </a>
+          </li>
+          <li>
+            <a class="nav_genre" id="active_nav" style="text-decoration: none;" href="{% url 'all_reports_url' %}">Читать</a>
+          </li>
+
+      </div>
+      <div class="item-genres">
+
+        {% for genre in genre %}
+        <li>
+          <a style="text-decoration:none;" href="{% url 'genre_detail_url' slug=genre.slug %}">{{ genre.name }}</a>
+        </li>
+          {% endfor %}
+      </div>
+
+
   </div>
 {% endblock %}
 
@@ -43,10 +53,10 @@
 <div class="container-obr">
  {% for type in type %}
   <h3 class="type-name-obr">{{ type.name }}</h3>
-    <div class="item-obr">
+    <div class="item-obr" style="">
       {% for item in type.item_set.all %}
         <div class="item">
-          <a href="{{item.clip}}" style="text-decoration:none;">
+          <a href="{% url 'item_detail_url' id=item.id %}" style="text-decoration:none;">
             <div class="item-detail" style="background:url('{{item.image.url}}')">
               <div class="item-name">
                 <div class="item-topic">

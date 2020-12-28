@@ -11,26 +11,42 @@
 {% block content %}
 
 
-<div class="someone-profile">
-	<div class="someone-profile-container">
-		<div class="someone-profile-img">
-				<img src="{{ profile.profile.image.url }}">
-				<div class="som-prof-info">
-					<!-- {{ profile.email }} -->
-					<div class="my_posts">
-						<h2>Статьи @{{ profile.username }}</h2>
-						{% for report in profile.report_set.all %}
-							<a id="someone-post" style="text-decoration:none;" href="{% url 'report_detail_url' id=report.id %}">
-								<div class="">
-									{{ report.title }}
-								</div>
-							</a>
-						{% endfor %}
-					</div>
+
+
+
+<h2 id="dobro_tech" style="text-align:center; margin-top:80px">Страница @{{ profile.username }}</h2>
+
+<div class="card" style="background-color:dimgrey; margin-top:40px">
+	<img src="{{ profile.profile.images.url }}" style="width:100%">
+  <h4 style="padding-top:20px;">@{{ profile.email }}</h4>
+  <p class="title_profile" style="color:white;">{{profile.profile.phone}}</p>
+	<!-- {{p_form.errors}} -->
+  <!-- <p id="write-post"><a style="text-decoration:none; text-decoration:underline" href="{% url 'report_create_url' %}">Написать пост</a></p> -->
+		<h4>Статьи</h4>
+		{% for report in profile.report_set.all %}
+			<a style="text-decoration:none;" href="{% url 'report_detail_url' id=report.id %}">
+				<div class="report-name">
+					{{ report.title }}
 				</div>
-		</div>
-	</div>
+			</a>
+		{% endfor %}
+  <div style="margin: 24px 0;" class="profile_href">
+    <a href="#"><i class="fa fa-dribbble"></i></a>
+    <a href="#"><i class="fa fa-twitter"></i></a>
+    <a href="#"><i class="fa fa-linkedin"></i></a>
+    <a href="#"><i class="fa fa-facebook"></i></a>
+  </div>
+
+
+
+<!-- 
+<a href="{% url 'logout_url' %}">
+	<button class="profile_button" type="submit" style="border: none;outline: 0;display: inline-block;padding: 8px;color: white;background-color: #000; margin-top:30px; text-align: center;cursor: pointer;width: 100%;font-size: 18px;">Выйти</button>
+
+</a> -->
+
 </div>
+
 
 
 {% endblock %}

@@ -9,9 +9,9 @@
           </div>
           <div class="com-form-input">
             {% if request.user.is_authenticated %}
-              <input type="submit" value="ОСТАВИТЬ КОММЕНТАРИЙ" class="btn btn-outline-success">
+              <input type="submit" value="Отправить" class="btn btn-default">
             {% else %}
-              <input type="submit" value="ОСТАВИТЬ КОММЕНТАРИЙ" class="btn btn-outline-success" disabled>
+              <input type="submit" value="Отправить" class="btn btn-default" disabled>
             {% endif %}
           </div>
 
@@ -20,7 +20,7 @@
   </div>
 </div>
 
-<a style="text-decoration:none;" href="#" class="comment-btn"">
+<a style="text-decoration:none;" href="#" type="submit" class="comment-btn">
 
   {{ comments.count }} <i class="fa fa-comment"></i>Комментарий
   <!-- {{ comments|pluralize }} -->
@@ -32,32 +32,34 @@
 
 <div class="comment_form" id="comment_form" style="display:none">
   <blockquote class="blockquote">
-    <p class="mb-0"><small>{{ comment.content }}</small></p>
+    <p class="mb-0" style="color:white;"><small>{{ comment.content }}</small></p>
     <footer class="blockquote-footer"><small>by {{ comment.user|capfirst }}| {{ comment.timestamp|timesince }} ago</small>
-      <a class="comment-reply-btn" href=""><button type="button" name="button" class="reply-btn btn btn-outline-dark btn-sm">Reply</button></a>
+      <a class="comment-reply-btn" href=""><button type="button" name="button" id="reply_btn" class="reply-btn btn btn-outline-dark btn-sm">Ответить</button></a>
       {% if user == comment.user %}
-      <a href="{% url 'comment_delete_url' id=comment.id %}">Delete</a>
+      <a id="com_del_btn" class="btn btn-outline-dark btn-sm" href="{% url 'comment_delete_url' id=comment.id %}">Удалить</a>
       {% endif %}
     </footer>
 
     <div id="comment-reply" class="container mt-4" style="display:none;">
       {% for reply in comment.replies.all %}
       <blockquote class="blockquote">
-        <p class="mb-0"><small>{{ reply.content }}</small></p>
+        <p class="mb-0" style="color:white;"><small>{{ reply.content }}</small></p>
         <footer class="blockquote-footer"><small>| by {{ reply.user|capfirst }} | {{ reply.timestamp|timesince }} ago</small></footer>
       </blockquote>
       {% endfor %}
       <div class="comment-reply">
-        <form method="post" class="reply-form">
+        <form method="post" class="reply-form" style="display:flex; justify-content:space-between;">
           {% csrf_token %}
             <input type="hidden" name="comment_id" value="{{ comment.id }}">
+            <div class="" style="width:67%;">
+              {{ comment_form.as_p }}
 
-          {{ comment_form.as_p }}
+            </div>
           {% if request.user.is_authenticated %}
 
-            <input type="submit" value="Submit" class="btn btn-outline-success">
+            <input id="reply_send" type="submit" value="Отправить" class="btn btn-default">
           {% else %}
-            <input type="submit" value="Submit" class="btn btn-outline-success" disabled>
+            <input id="reply_send" type="submit" value="Отправить" class="btn btn-default" disabled>
           {% endif %}
         </form>
       </div>

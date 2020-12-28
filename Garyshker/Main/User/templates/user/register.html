@@ -7,7 +7,7 @@
 
 
 {% block content %}
-	<h2>Dobro pozhalovat</h2>
+	<!-- <h2>Dobro pozhalovat</h2>
 
 	<form method="POST">
 		{% csrf_token %}
@@ -15,6 +15,70 @@
 		<div>
 			<button type="submit">Sign Up</button>
 		</div>
-	</form>
+	</form> -->
+
+
+
+	<div class="limiter" style="background-color:black">
+			<div class="container-login100" style="background-color:black">
+				<div class="wrap-login100">
+					<form class="login100-form validate-form" style="background-color:black;" method="post">
+						{% csrf_token %}
+
+						<span style="color:white; " class="login100-form-title p-b-34">
+							Добро пожаловать
+						</span>
+
+						<div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name" id="reg_username">
+							<!-- <input id="first-name" class="input100" type="text" name="username" placeholder="User name"> -->
+							{{form.username}}
+							<span class="focus-input100"></span>
+						</div>
+						<div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
+							<!-- <input id="first-name" class="input100" type="text" name="username" placeholder="User name"> -->
+							{{form.email}}
+							<span class="focus-input100"></span>
+						</div>
+						<div class="wrap-input100 rs2-wrap-input100 validate-input m-b-20" data-validate="Type password" >
+							<!-- <input class="input100" type="password" name="pass" placeholder="Password"> -->
+							{{form.password1}}
+							<span class="focus-input100"></span>
+						</div>
+
+						<div class="wrap-input100 rs2-wrap-input100 validate-input m-b-20" data-validate="Type password">
+							<!-- <input class="input100" type="password" name="pass" placeholder="Password"> -->
+							{{form.password2}}
+							<span class="focus-input100"></span>
+						</div>
+
+						<div class="container-login100-form-btn">
+							<button class="login100-form-btn" type="submit">
+								Зарегистрироваться
+							</button>
+						</div>
+
+						<!-- <div class="w-full text-center p-t-27 p-b-239">
+							<span class="txt1">
+								Forgot
+							</span>
+
+							<a href="#" class="txt2">
+								User name / password?
+							</a>
+						</div> -->
+
+						<div class="w-full text-center" id="login_reg">
+							<a href="{% url 'login_url' %}" class="txt3" style="text-decoration:none;">
+								У вас есть аккаунт?
+							</a>
+						</div>
+					</form>
+
+					<div class="login100-more" style="background-image: url('https://www.worldatlas.com/upload/94/27/8b/shutterstock-637884949.jpg');"></div>
+				</div>
+			</div>
+		</div>
+
+
 
 {% endblock %}

@@ -5,6 +5,8 @@ from User import views as v
 from User.views import *
 from Dobro.views import *
 from Obrazovanie.views import *
+from django.conf.urls import include
+
 
 
 
@@ -13,7 +15,7 @@ from Obrazovanie.views import *
 urlpatterns = [
     path('', index, name='index_urls'),
     path('register/', v.register, name='register_url'),
-    path('login/', auth_view.LoginView.as_view(template_name='user/login.html'), name='login_url'),
+    path('login/', auth_view.LoginView.as_view(template_name='user/login.html', authentication_form=MyAuthForm), name='login_url'),
     path('logout/', auth_view.LogoutView.as_view(template_name='user/logout.html'), name='logout_url'),
     path('profile/', profiles, name='profile_url'),
     path('charity/', charity, name='charity_url'),
@@ -29,9 +31,7 @@ urlpatterns = [
     path('report/create/', report_create, name='report_create_url'),
     path('report_creation/', after_writing_post, name='after_writing_post_url'),
     path('comment_delete/<int:id>', comment_delete, name='comment_delete_url'),
-    path('someone_profile/<int:id>', someone_profile, name='someone_profile_url')
-
-
+    path('someone_profile/<int:id>', someone_profile, name='someone_profile_url'),
 
 
     # path('charity/feedback/', )

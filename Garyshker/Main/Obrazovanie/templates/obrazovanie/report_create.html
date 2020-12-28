@@ -12,7 +12,7 @@
 {% block content %}
 
 
-  <form method="post">
+  <!-- <form method="post">
     {% csrf_token %}
 
     <div class="">
@@ -25,14 +25,14 @@
 
 
     <div class="">
-      Header: {{ form.header }}
-    </div>
+      <!-- Header: {{ form.header }} -->
+    <!-- </div>
     <div class="">
       Tekst: {{ form.body }}
-    </div>
+    </div> -->
 
 
-    <a href="#">
+    <!-- <a href="#">
       <div class="show">
         Genre
       </div>
@@ -45,12 +45,72 @@
 
     <div class="genre2" style="display:none;">
       Жанр: {{ form.genre }}
-    </div>
+    </div> -->
 
 
 
-
+<!--
     <input type="submit" name="Create" class="btn btn-outline-success">
-  </form>
+  </form> -->
+
+
+
+
+  <div class="bg_img"></div>
+  <div class="form_wrapper">
+    <div class="form_container">
+      <div class="title_container">
+        <h2>Новая запись</h2>
+        <!-- <h3>Created with pure CSS Only!</h3> -->
+      </div>
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row clearfix">
+          <div class="col_half">
+            <label>Название</label>
+            <div class="input_field">
+              {{ form.title }}
+              <!-- <input type="text" name="first_name" placeholder="" required /> -->
+            </div>
+          </div>
+          <div class="col_half">
+            <label>Жанр</label>
+            <div class="input_field" id="create_post_genre">
+              <!-- <input type="text" name="last_name" placeholder="" /> -->
+              {{ form.genre }}
+            </div>
+          </div>
+        </div>
+        <div class="row clearfix">
+          <div class="col_half">
+            <label>Картинка</label>
+            <div class="input_field">
+              {{ form.image }}
+              <!-- <input type="email" name="email" placeholder="johndoe@gmail.com" required /> -->
+            </div>
+          </div>
+          <!-- <div class="col_half">
+            <label>Phone</label>
+            <div class="input_field">
+              <input type="tel" name="phone" placeholder="Phone no" pattern="[0-9]{10}" />
+            </div>
+          </div> -->
+        </div>
+        <div class="row clearfix">
+          <div>
+            <label>Текст</label>
+            <div class="textarea_field" id = write-post>
+              <!-- <textarea cols="46" rows="3" name="comments"></textarea> -->
+              {{form.body}}
+            </div>
+          </div>
+        </div>
+        <input class="button" type="submit" value="Опубликовать" />
+      </form>
+    </div>
+  </div>
+  <!-- <p class="credit">Site credit <a href="http://www.designtheway.com/responsive-form/" target="_blank">Design the way</a></p> -->
+
+
 
 {% endblock %}

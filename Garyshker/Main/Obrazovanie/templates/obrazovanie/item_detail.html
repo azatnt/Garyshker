@@ -16,26 +16,90 @@
 {% block content %}
 
 
-    <h3>{{ item.name }}</h3>
+<div class="bg_img_1"></div>
+<div class="form_wrapper_1">
+  <div class="form_container">
+    <div class="title_container">
+      <h2>{{ item.name }}</h2>
+      <!-- <h3>Created with pure CSS Only!</h3> -->
+    </div>
+    <div>
+      <!-- {% csrf_token %} -->
+      <div class="row clearfix">
+        <div class="col_half">
+          <label>Ведущий</label>
+          <div class="input_field">
+            {{ item.leading }}
+            <!-- <input type="text" name="first_name" placeholder="" required /> -->
+          </div>
+        </div>
+        <div class="col_half">
+          <label>Гость</label>
+          <div class="input_field" id="create_post_genre">
+            <!-- <input type="text" name="last_name" placeholder="" /> -->
+            {{ item.guest }}
+          </div>
+        </div>
+      </div>
+      <div class="row clearfix">
+        <div class="textarea_field" id = write-post>
+          {{ item.description_video }}
+
+        </div>
+        <!-- <div class="col_half">
+          <label>Phone</label>
+          <div class="input_field">
+            <input type="tel" name="phone" placeholder="Phone no" pattern="[0-9]{10}" />
+          </div>
+        </div> -->
+      </div>
+      <div class="row clearfix">
+        <div style="margin:0 auto;">
+          <label></label>
+          <div class="textarea_field">
+            <!-- <textarea cols="46" rows="3" name="comments"></textarea> -->
+            {% if item.podcast.url %}
+              <audio controls controlsList="nodownload" style="outline:none;">
+                <source src="{{ item.podcast.url }}"/>
+              </audio>
+              <!-- <iframe src="{{item.podcast.url}}" width="" height=""></iframe> -->
+            {% else %}
+              <p>There is no podcast</p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+    <!-- <h3></h3>
 
     <div class="">
-      Ведущий: {{ item.leading }}
+      Ведущий:
     </div>
 
     <div class="">
       Гости: {{ item.guest }}
     </div>
+    <div class="">
+      <img src="{{item.image.url}}" alt="">
+    </div> -->
 
-    <video width="400" controls>
+    <!-- <video width="400" controls>
       <source src="{{item.video.url}}" type="video/mp4">
-    </video>
+    </video> -->
+
+
+
     <!-- <div class="">
       {{ item.views }} views
     </div> -->
 
-    <div class="">
-      {{ item.description_video }}
-    </div>
+    <!-- <div class="">
+    </div> -->
 
 
 

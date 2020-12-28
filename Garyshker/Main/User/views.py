@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import *
 from django.contrib import messages
+from django.views.generic import View
 
 
 
@@ -27,21 +28,65 @@ def register(request):
 def profiles(request):
 	profile = Profile.objects.get_or_create(user=request.user)
 	if request.method == 'POST':
+		print("GONNA")
 		u_form = UserUpdateForm(request.POST, instance=request.user)
 		p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
-		if u_form.is_valid() and p_form.is_valid():
-			u_form.save()
+		print(p_form)
+		if p_form.is_valid():
+			print("gonna save")
+			# u_form.save()
 			p_form.save()
+
+			print(p_form)
+			# return redirect('obrazovanie_url')
+
 
 	else:
 		u_form = UserUpdateForm(instance=request.user)
 		p_form = ProfileUpdateForm(instance=request.user.profile)
+		print("didn't work")
+		# return redirect('obrazovanie_url')
+
 
 	context = {
 		'u_form': u_form,
 		'p_form': p_form
 	}
 	return render(request, 'user/profile.html', context)
+
+#
+# class UserProfile(View):
+# 	model = Profile
+# 	template = 'user/profile.html'
+#
+# 	def get(self, request, *args, **kwargs):
+# 		profile = self.model.objects.get_or_create(user=request.user)
+# 		u_form = UserUpdateForm(instance=request.user)
+# 		p_form = ProfileUpdateForm(instance=request.user.profile)
+# 		context = {
+# 			'u_form': u_form,
+# 			'p_form': p_form
+# 			}
+# 		return render(request, self.template, context)
+#
+#
+# 	def post(self, request, *args, **kwargs):
+# 		profile = self.model.objects.get_or_create(user=request.user)
+# 		u_form = UserUpdateForm(request.POST, instance=request.user)
+# 		p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
+#
+# 		if u_form.is_valid() and p_form.is_valid():
+# 			u_form.save()
+# 			p_form.save()
+# 			messages.success(request, f'Your account has been updated!')
+# 			return redirect('profile_url')
+#
+# 		context = {
+# 			'u_form': u_form,
+# 			'p_form': p_form
+# 		}
+# 		return render(request, self.template, context)
+
 
 
 

@@ -1,21 +1,23 @@
 {% if request.user.is_authenticated %}
-<form action="{% url 'likes_url' %}" method="post">
+<form action="{% url 'likes_url' %}" method="post" style="width:40%;">
   {% csrf_token %}
-    <div class="like-section">
-      <div class="">
-        <p class="like-count">{{ report.likes.count }}</p>
-      </div>
+    <div class="like-section" style=" ">
 
-      <div class="like-body">
+      <div class="like-body" style="width:60%; height:40px; display:flex">
+        <p class="like-count">{{ report.likes.count }}</p>
+
         {% if is_liked %}
-          <button type="submit" id="like" name="report_id" value="{{report.id}}" class="btn-like"><i id="like-rep" class="fa fa-heart">Нравится</i></button>
+          <button type="submit" style="outline:0;" id="like" name="report_id" value="{{report.id}}" class="btn-like"><i id="like-rep" class="fa fa-heart">Нравится</i></button>
         {% else %}
-          <button style="outline:0;" type="submit" id='like' name="report_id" value="{{report.id}}" class="btn-like2"><i class="fa fa-heart">Нравится</i></button>
+          <button style="outline:0;" type="submit" id='like' name="report_id" value="{{report.id}}" class="btn-like2"><i id="like-rep2" class="fa fa-heart">Нравится</i></button>
         {% endif %}
       </div>
     </div>
 </form>
 {% else %}
-  <button type="" name="post_id" value="{{report.id}}">Like</button>
+<a id="like-href" href="/login">
+  <button type="" class="btn btn-danger" name="post_id" value="{{report.id}}">Like</button>
     {{ report.likes.count }}
+</a>
+
 {% endif %}

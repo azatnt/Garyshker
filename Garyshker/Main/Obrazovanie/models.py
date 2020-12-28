@@ -71,7 +71,7 @@ class Item(models.Model):
     guest = models.CharField(max_length=120, default='Secret')
     image = models.ImageField(blank=True, upload_to='item-image')
     genre = models.ForeignKey(Genre, on_delete=models.CASCADE, blank=True, null=True)
-    video = models.FileField(upload_to='item-videos', default='Please upload video')
+    podcast = models.FileField(upload_to='item-podcast', default='Please upload video')
     description_video = models.TextField(blank=True, null=True)
     created_date = models.DateTimeField(default=timezone.now)
     leading = models.CharField(max_length=120, blank=True)

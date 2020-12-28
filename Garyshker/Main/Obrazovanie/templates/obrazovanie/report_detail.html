@@ -11,59 +11,95 @@
 {% block subtitle %}
 
 
-  <!-- {% for genre in genre_all %}
-    <a href="{% url 'genre_detail_reports_url' slug=genre.slug %}">{{ genre.name }}</a>
-  {% endfor %}
+  <div class="item-genre">
+    <div class="item-type">
+      {% with url_name=request.resolver_match.url_name %}
+        <a class="active" style="text-decoration:none;" href="{% url 'obrazovanie_url' %}">Смотреть </a>
+        <a class="{% if url_name == 'all_reports_url' %}active{% endif %}" style="text-decoration: none;" href="{% url 'all_reports_url' %}">Читать</a>
+      {% endwith %}
+    </div>
+    <div class="item-genres">
 
-  <a href="{% url 'obrazovanie_url' %}"><h2>Все темы</h2></a>
+      {% for genre in genre_all %}
+        <a style="text-decoration:none;" href="{% url 'genre_detail_reports_url' slug=genre.slug %}">{{ genre.name }}</a>
+        {% endfor %}
+    </div>
 
-  <a href="{% url 'obrazovanie_url' %}">Смотреть</a>
+  </div>
 
 
-  <a href="{% url 'all_reports_url' %}">Читать</a> -->
 
 {% endblock %}
 
 
 {% block content %}
+
   <div class="container-rep-detail">
-    <div class="rep-detail">
 
-      <div class="rep-author-date">
-        <div class="rep-author-img">
-          <img src="{{report.author.profile.image.url}}" alt="">
-        </div>
-        <div class="rep-author">
-          <a style="text-decoration:none;" href="{% url 'someone_profile_url' id=report.author.id %}">
-            @{{ report.author }}
-          </a>
-        </div>
-          <div class="rep-date">
-            {{ report.wrote_date }}
+      <div class="rep-detail content">
+
+        <div class="rep-author-date">
+          <div class="rep-author-img">
+            <img src="{{report.author.profile.images.url}}" alt="">
           </div>
-      </div>
-
-      <div class="rep-title">
-        <h5>{{ report.title }}</h5>
-      </div>
-
-
-
-      <div class="rep-body">
-        <textarea class="rep-textarea" name="name" rows="19" cols="90">{{ report.body }}</textarea>
-
-        <div id="like-section">
-        {% include 'obrazovanie/like_section.html' %}
+          <div class="rep-author">
+            <a style="text-decoration:none;" href="{% url 'someone_profile_url' id=report.author.id %}">
+              @{{ report.author }}
+            </a>
+          </div>
+            <div class="rep-date">
+              {{ report.wrote_date|timesince }} ago
+            </div>
         </div>
-        <div class="main-comment-section">
-        {% include 'obrazovanie/comments.html' %}
+
+        <div class="rep-title">
+          <h5>{{ report.title }}</h5>
+        </div>
+
+
+
+        <div class="rep-body">
+          <textarea id="com-area" class="rep-textarea" name="name" rows="19" cols="90">{{ report.body }}</textarea>
+
+          <div id="like-section">
+          {% include 'obrazovanie/like_section.html' %}
+          </div>
+          <div class="main-comment-section">
+          {% include 'obrazovanie/comments.html' %}
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="rep-rec">
+      <div class="rep-rec content">
+        <h5 style="text-align:center; color:orange;">Рекомендуем</h5>
+        {% for popular_post in popular_post %}
+          <div class="reccomend" >
+            <div class="rec">
+              <a href="{% url 'report_detail_url' id=popular_post.id %}" style="text-decoration:none">
+                {{ popular_post }}
+              </a>
+            </div>
+              <i id="like-rep" class="fa fa-heart">
+                {{ popular_post.likes.count }}
+              </i>
+              <i id="like-rep" class="fa fa-comment">
+                {{popular_post.comment_set.count}}
 
-    </div>
+              </i>
+              <!-- {% for comment in popular_post.comment_set.all %}
+              <div class="" style="color:white;">
+                {{comment.user.count}}
+
+              </div>
+              {% endfor %} -->
+
+          </div>
+
+
+        {% endfor %}
+      </div>
+
+
 
 
   </div>

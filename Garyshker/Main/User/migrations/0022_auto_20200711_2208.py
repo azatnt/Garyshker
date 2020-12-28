@@ -23,6 +23,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='profile',
             name='total_investment',
-            field=models.DecimalField(decimal_places=0, default=0, max_digits=99999),
+            field=models.DecimalField(decimal_places=0, default=0, max_digits=9),
         ),
     ]

@@ -6,6 +6,8 @@ from django.views.generic import View
 from django.db.models import F
 from django.template.loader import render_to_string
 from django.http import JsonResponse
+from django.db.models import Count
+
 
 
 
@@ -96,7 +98,9 @@ def all_reports(request):
 def report_detail(request, id):
     report = Report.objects.get(id=id)
     comments = Comment.objects.filter(report=report, reply=None).order_by('-id')
-
+    genre_all = Genre.objects.all()
+    popular_post = Report.objects.annotate(like_report=Count('likes')).order_by('-like_report')[:4]
+    # popular_post_comment = Comment.objects.filter(report = popular_post[0], reply=None)
     is_liked = False
     if report.likes.filter(id=request.user.id).exists():
         is_liked=True
@@ -127,7 +131,12 @@ def report_detail(request, id):
         'is_favourite': is_favourite,
         'comments': comments,
         'comment_form': comment_form,
-        'is_liked': is_liked
+        'is_liked': is_liked,
+        'genre_all': genre_all,
+        'popular_post': popular_post,
+        # 'popular_post_comment': popular_post_comment
+
+
 
     }
 
@@ -171,7 +180,7 @@ def like_report(request):
 
 def report_create(request):
     if request.method == 'POST':
-        form = ReportCreateForm(request.POST)
+        form = ReportCreateForm(request.POST, request.FILES)
         if form.is_valid():
             report = form.save()
             report.author = request.user

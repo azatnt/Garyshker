@@ -11,7 +11,7 @@
 
 
 {% block content %}
-	{% if user.is_authenticated %}
+	<!-- {% if user.is_authenticated %}
 		<div>
 			<form class="" action="" method="POST">
 		      {% csrf_token %}
@@ -37,6 +37,7 @@
 		    </form>
 		</div>
 
+
 	{% else %}
 
 		<div>
@@ -44,6 +45,12 @@
 			<a href="{% url 'login_url' %}">Login Please</a>
 		</div>
 
-	{% endif %}
+
+
+	{% endif %} -->
+
+
+	<h2 id="dobro_tech" style="text-align:center; margin-top:200px; height:200px;">Проводится техническое обслуживание</h2>
+
 
 {% endblock %}
