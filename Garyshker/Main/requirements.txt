@@ -20,7 +20,7 @@ daphne==2.5.0
 defusedxml==0.6.0
 diff-match-patch==20200713
 distlib==0.3.0
-Django==3.0.3
+Django==3.1.6
 django-applepodcast==0.3.7
 django-cors-headers==3.3.0
 django-crispy-forms==1.9.0
